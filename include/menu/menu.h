@@ -1,3 +1,6 @@
+#ifndef TLC_INCLUDE_MENU_MENU_H
+#define TLC_INCLUDE_MENU_MENU_H
+
 #include <string>
 #include <vector>
 
@@ -14,3 +17,5 @@ namespace menu{
 
     void showMenu();
 }
+
+#endif

@@ -1,7 +1,7 @@
-#ifndef EXERCISE_H
-#define EXERCISE_H
+#ifndef TLC_INCLUDE_EXERCISES_EXERCISE_H
+#define TLC_INCLUDE_EXERCISES_EXERCISE_H
 
-#include <exercises/interfaces/exercise.h>
+#include <exercises/interfaces/exercise_interface.h>
 #include <exercises/question.h>
 
 #include <functional>
