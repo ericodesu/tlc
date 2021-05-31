@@ -1,7 +1,7 @@
-#ifndef QUESTION_H
-#define QUESTION_H
+#ifndef TLC_INCLUDE_EXERCISES_QUESTION_H
+#define TLC_INCLUDE_EXERCISES_QUESTION_H
 
-#include <exercises/interfaces/question.h>
+#include <exercises/interfaces/question_interface.h>
 
 #include <functional>
 #include <string>

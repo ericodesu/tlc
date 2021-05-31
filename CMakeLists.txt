@@ -3,7 +3,8 @@ project(
     TLC
     VERSION 0.1
     LANGUAGES CXX
-    DESCRIPTION "The Learning Channel for C++")
+    DESCRIPTION "The Learning Channel for C++"
+)
 
 include(FetchContent)
 
@@ -17,5 +18,5 @@ FetchContent_Declare(
   GIT_TAG 5.3.0)
 FetchContent_MakeAvailable(fmtlib)
 
-add_subdirectory(lib)
+add_subdirectory(apps)
 add_subdirectory(src)

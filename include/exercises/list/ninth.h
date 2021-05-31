@@ -1,3 +1,6 @@
+#ifndef TLC_INCLUDE_EXERCISES_LIST_NINTH_H
+#define TLC_INCLUDE_EXERCISES_LIST_NINTH_H
+
 #include <exercises/exercise.h>
 #include <exercises/question.h>
 
@@ -6,3 +9,5 @@ class NinthExercise: public Exercise {
         void execQ1();
         void execQ2();
 };
+
+#endif

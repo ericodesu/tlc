@@ -1,7 +1,8 @@
-#include <exercises/list/fifth.h>
 #include <exercises/question.h>
+#include <exercises/list/fifth.h>
 #include <services/try_again_handler.h>
 
+#include <stdio.h>
 #include <iostream>
 #include <functional>
 #include <string>
@@ -82,7 +83,10 @@ void FifthExercise::execQ2(){
     std::cout << "Find the value of PI using the series of Nilakantha\nwith the minimal amount of error going between (10^-2 until 10^-20)\n";\
 
     do{
+        bool hasPartialResults = false;
+
         int userChoice = 0;
+
         double errorValue = 0;
 
         do{
@@ -96,15 +100,39 @@ void FifthExercise::execQ2(){
 
         errorValue = std::pow(10, - userChoice);
 
-        std::cout << "You've choosen the error < ";
+        std::printf("You've choosen the error < %g", errorValue);
 
-        if(userChoice > 3){
-            std::cout.precision(0);
+        hasPartialResults = tryAgainHandler::showTryAgain("Want to watch the parcial results?");
 
-            std::cout << std::scientific;
+        int currentIterationValue = 1;
+
+        double currentPIValue = 3,
+               currentError = PI21 - currentPIValue,
+               currentSummation = 0;
+
+        std::string currentErroValueString = "",
+                    middleTitleSpacing = std::string((ERROR_ROOF_VALUE / 2) - 1, ' '),
+                    lastTitleSpacing = std::string((ERROR_ROOF_VALUE) - 3, ' ');
+    
+        std::cout << "\n    N" << middleTitleSpacing << "Calculated PI" << lastTitleSpacing << "Error";
+
+        while(std::fabs(currentError) >= errorValue){
+            currentErroValueString = "\n%5d %" + std::to_string(ERROR_ROOF_VALUE) + "." + std::to_string(userChoice + 1) + "f %" + std::to_string(ERROR_ROOF_VALUE) + "." + std::to_string(userChoice + 1) + "f";
+
+            if(hasPartialResults == true){
+                std::printf(currentErroValueString.c_str(), currentIterationValue, currentPIValue, currentError);
+            }
+
+            currentSummation = ((std::pow(-1, (currentIterationValue + 1))) * 4) / ((2 * currentIterationValue) * ((2 * currentIterationValue) + 1) * ((2 * currentIterationValue) + 2));
+
+            currentPIValue = currentPIValue + currentSummation;
+            
+            currentError = currentPIValue - PI21;
+
+            currentIterationValue ++;
         }
 
-        std::cout << errorValue;
+        std::printf(currentErroValueString.c_str(), currentIterationValue, currentPIValue, currentError);
 
         isAnotherTry = tryAgainHandler::showTryAgain("Want another run?");
     }while(isAnotherTry == true);

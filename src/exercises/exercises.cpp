@@ -1,10 +1,10 @@
+#include <exercises/exercises.h>
+#include <exercises/question.h>
 #include <exercises/list/fifth.h>
 #include <exercises/list/eighth.h>
 #include <exercises/list/ninth.h>
 #include <exercises/list/tenth.h>
 #include <exercises/list/thirteenth.h>
-#include <exercises/exercises.h>
-#include <exercises/question.h>
 
 #include <iostream>
 #include <functional>
