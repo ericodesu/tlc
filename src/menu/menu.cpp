@@ -20,7 +20,7 @@ void menu::showMenu(){
 
         uiHandler::showBarsLine(28);
 
-        uiHandler::showListing("  MENU", "Available Exercises", MENU_AVAILABLE_CHOICES);
+        uiHandler::showListing("  TLC (The Learning Channel)", "Available Exercises", MENU_AVAILABLE_CHOICES);
 
         uiHandler::showBarsLine(28);
 
