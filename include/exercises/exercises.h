@@ -2,15 +2,15 @@
 #define TLC_INCLUDE_EXERCISES_EXERCISES_H
 
 namespace exercises{
-    void runFifthExercise();
+    void RunFifthExercise();
 
-    void runEighthExercise();
+    void RunEighthExercise();
 
-    void runNinthExercise();
+    void RunNinthExercise();
 
-    void runTenthExercise();
+    void RunTenthExercise();
 
-    void runThirteenthExercise();
+    void RunThirteenthExercise();
 }
 
 #endif

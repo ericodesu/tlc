@@ -6,8 +6,8 @@
 
 class NinthExercise: public Exercise {
     public:
-        void execQ1();
-        void execQ2();
+        void ExecQ1();
+        void ExecQ2();
 };
 
 #endif

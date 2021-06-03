@@ -6,8 +6,8 @@
 
 class IQuestion {
     private:
-        virtual std::string getQuestionName() = 0;
-        virtual std::function<void()> getExecQuestion() = 0;
+        virtual std::string GetQuestionName() = 0;
+        virtual std::function<void()> GetExecQuestion() = 0;
 };
 
 #endif

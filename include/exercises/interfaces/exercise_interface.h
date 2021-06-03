@@ -8,10 +8,10 @@
 
 class IExercise {
     private:
-        virtual void setQuestionList(std::vector<Question> newQuestionList) = 0;
-        virtual std::vector<Question> getQuestionList() = 0;
-        virtual Question execQuestionsMenu(std::vector<Question> questionList) = 0;
-        virtual void runQuestion(std::function<void()> runnableQuestionExec) = 0;
+        virtual void SetQuestionList(std::vector<Question> newQuestionList) = 0;
+        virtual std::vector<Question> GetQuestionList() = 0;
+        virtual Question ExecQuestionsMenu(std::vector<Question> questionList) = 0;
+        virtual void RunQuestion(std::function<void()> runnableQuestionExec) = 0;
 };
 
 #endif

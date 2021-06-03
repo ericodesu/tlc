@@ -4,9 +4,12 @@
 #include <string>
 #include <vector>
 
-namespace uiHandler {
-    void showBarsLine(int barsQuantityValue);
-    void showListing(std::string primaryText, std::string secondaryText, std::vector<std::string> listing);
+namespace uihandler {
+    void ShowBarsLine(int bars_quantity_value);
+    void ShowListing(std::string primary_text,
+                     std::string secondary_text,
+                     std::vector<std::string> listing
+    );
 };
 
 #endif
