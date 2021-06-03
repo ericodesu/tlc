@@ -6,6 +6,24 @@
 #include <vector>
 
 namespace vectorhandler {
+    /**
+     *    The multidimensional namespace code is originated from a stackoverflow post,
+     *    a few usage directions must be pointed out, given:
+     * 
+     *    - The operator usage seems a bit out of the ordinary due to design choices
+     *      instead of acessing the nested vector by [j][k]...[N], you instead provide
+     *      an 1D vector of N size which each index is a nested (if present) vector.
+     * 
+     *      E.g. Trying to access a 1D vector with 10 length at the 2nd index:
+     *              
+     *              a_vector_dimensions = [2];
+     * 
+     *              a_vector[a_vector_dimension]; <-- This is where you are accessing it;
+     * 
+     *      PS - The stackoverflow answer came from:
+     *           https://stackoverflow.com/questions/48456507/c-generate-multidimensional-vector-of-unknown-depth
+     * 
+     */
     namespace multidimensional{
         template <typename T>
         class Vector {
@@ -53,16 +71,6 @@ namespace vectorhandler {
 
                     return _data[i];
                 }
-        };
-
-        std::ostream& operator<<(std::ostream &out, const std::vector<size_t> &values){
-            const char *sep = "";
-
-            for(size_t value : values){
-                out << sep << value; sep = ", ";
-            }
-
-            return out;
         };
 
         bool inc(std::vector<size_t> &indices, const std::vector<size_t> &dims){
