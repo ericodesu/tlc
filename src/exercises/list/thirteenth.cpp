@@ -2,6 +2,6 @@
 
 #include <iostream>
 
-void ThirteenthExercise::execQ1(){
+void ThirteenthExercise::ExecQ1(){
     std::cout << "huh";
 };
