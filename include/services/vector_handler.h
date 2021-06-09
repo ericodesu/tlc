@@ -1,8 +1,12 @@
 #ifndef TLC_INCLUDE_SERVICES_VECTOR_HANDLER_H
 #define TLC_INCLUDE_SERVICES_VECTOR_HANDLER_H
 
+#include <services/math_handler.h>
+
 #include <cassert>
+#include <string>
 #include <iostream>
+#include <iomanip>
 #include <vector>
 
 namespace vectorhandler {
@@ -94,6 +98,51 @@ namespace vectorhandler {
     template <class TVector>
     std::vector<TVector> CreateUnidimensionalVector(size_t vector_size){
         return std::vector<TVector>(vector_size, 0);
+    };
+
+    template <class TVector>
+    void ShowMultidimensionalVector(multidimensional::Vector<TVector> matrix,
+                                    std::vector<size_t> matrix_dimensions,
+                                    std::string matrix_title = "Matrix",
+                                    int matrix_max_value = 10){
+        std::vector<size_t> indices(matrix_dimensions.size(), 0),
+                            current_dimensions(matrix_dimensions.size(), 0);
+
+        std::cout << matrix_title;
+
+        do{
+            for(int current_dimension_index = 1; current_dimension_index < matrix_dimensions.size(); current_dimension_index++){
+                size_t current_dimension_roof_value = matrix_dimensions[current_dimension_index],
+                       current_dimension_value = current_dimensions[current_dimension_index];
+
+                if(current_dimension_value == current_dimension_roof_value){
+                    current_dimensions[current_dimension_index] = 1;
+
+                    if(current_dimension_index == 1){
+                        std::cout << "\n";
+                    }
+                }else{
+                    current_dimensions[current_dimension_index] += 1;
+                }
+            }
+
+            std::cout << std::setw(mathhandler::CountDigits(matrix_max_value) + 1) << matrix[indices];
+
+            bool is_last_element = true;
+
+            for(int current_dimension_index = 1; current_dimension_index < matrix_dimensions.size(); current_dimension_index++){
+                size_t current_dimension_roof_value = matrix_dimensions[current_dimension_index],
+                       current_indice_value = indices[current_dimension_index];
+
+                if(current_indice_value != current_dimension_roof_value - 1){
+                    is_last_element = false;
+                }
+            }
+
+            if(matrix_dimensions.size() > 2 && is_last_element == true){
+                std::cout << "\n";
+            }
+        }while(multidimensional::inc(indices, matrix_dimensions) == false);
     };
 };
 
