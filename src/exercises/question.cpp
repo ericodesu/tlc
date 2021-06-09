@@ -3,15 +3,15 @@
 #include <functional>
 #include <string>
 
-Question::Question(std::string initialQuestionName, std::function<void()> initialQuestionExec){
-    Question::questionName = initialQuestionName;
-    Question::questionExec = initialQuestionExec;
+Question::Question(std::string initial_question_name, std::function<void()> InitialQuestionExec){
+    Question::question_name = initial_question_name;
+    Question::QuestionExec = InitialQuestionExec;
 };
 
-std::string Question::getQuestionName(){
-    return Question::questionName;
+std::string Question::GetQuestionName(){
+    return Question::question_name;
 };
 
-std::function<void()> Question::getExecQuestion(){
-    return Question::questionExec;
+std::function<void()> Question::GetExecQuestion(){
+    return Question::QuestionExec;
 };

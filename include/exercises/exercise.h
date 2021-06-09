@@ -9,13 +9,13 @@
 
 class Exercise: public IExercise {
     private:
-       std::vector<Question> questionList;
+       std::vector<Question> question_list;
 
     public:
-        void setQuestionList(std::vector<Question> newQuestionList);
-        std::vector<Question> getQuestionList();
-        Question execQuestionsMenu(std::vector<Question> questionList);
-        void runQuestion(std::function<void()> runnableQuestionExec);
+        void SetQuestionList(std::vector<Question> newQuestionList);
+        std::vector<Question> GetQuestionList();
+        Question ExecQuestionsMenu(std::vector<Question> questionList);
+        void RunQuestion(std::function<void()> runnableQuestionExec);
 };
 
 #endif

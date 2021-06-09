@@ -8,13 +8,13 @@
 
 class Question: public IQuestion {
     private:
-        std::function<void()> questionExec;
-        std::string questionName;
+        std::function<void()> QuestionExec;
+        std::string question_name;
 
     public:
-        Question(std::string initialQuestionName, std::function<void()> initialQuestionExec);
-        std::function<void()> getExecQuestion();
-        std::string getQuestionName();
+        Question(std::string initial_question_name, std::function<void()> InitialQuestionExec);
+        std::function<void()> GetExecQuestion();
+        std::string GetQuestionName();
 };
 
 #endif

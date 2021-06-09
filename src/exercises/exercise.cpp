@@ -5,51 +5,51 @@
 #include <iostream>
 #include <vector>
 
-void Exercise::setQuestionList(std::vector<Question> newQuestionList){
-    Exercise::questionList = newQuestionList;
+void Exercise::SetQuestionList(std::vector<Question> new_question_list){
+    Exercise::question_list = new_question_list;
 }
 ;
-std::vector<Question> Exercise::getQuestionList(){
-    return Exercise::questionList;
+std::vector<Question> Exercise::GetQuestionList(){
+    return Exercise::question_list;
 };
 
-Question Exercise::execQuestionsMenu(std::vector<Question> questionList){
-    int questionListLength = questionList.size();
+Question Exercise::ExecQuestionsMenu(std::vector<Question> question_list){
+    int question_list_length = question_list.size();
 
     std::vector<std::string> listing;
 
-    listing.reserve(questionListLength);
+    listing.reserve(question_list_length);
 
-    if(questionListLength > 0){
-        for(int currentQuestionIndex = 0; currentQuestionIndex < questionListLength; currentQuestionIndex++){
-            listing.push_back(questionList[currentQuestionIndex].getQuestionName());
+    if(question_list_length > 0){
+        for(int current_question_index = 0; current_question_index < question_list_length; current_question_index++){
+            listing.push_back(question_list[current_question_index].GetQuestionName());
         }
     }else{
         listing.push_back("No questions found");
     }
 
-    uiHandler::showBarsLine(28);
+    uihandler::ShowBarsLine(28);
 
-    uiHandler::showListing("Exercise", "Available questions", listing);
+    uihandler::ShowListing("Exercise", "Available questions", listing);
 
-    uiHandler::showBarsLine(28);
+    uihandler::ShowBarsLine(28);
 
-    int menuChoice = 0;
+    int menu_choice = 0;
 
-    while(menuChoice < 1 || menuChoice > questionListLength){
-        std::cout << "\n\nInsert an question between [" << 1 << " - " << questionListLength << "]: " ;
-        std::cin >> menuChoice;
+    while(menu_choice < 1 || menu_choice > question_list_length){
+        std::cout << "\n\nInsert an question between [" << 1 << " - " << question_list_length << "]: " ;
+        std::cin >> menu_choice;
 
-        if(menuChoice < 1 || menuChoice > questionListLength){
-            std::cout << "\nYou inserted " << menuChoice << " please insert values between [" << 1 << " - " << questionListLength << "]";
+        if(menu_choice < 1 || menu_choice > question_list_length){
+            std::cout << "\nYou inserted " << menu_choice << " please insert values between [" << 1 << " - " << question_list_length << "]";
         }
     }
 
-    return questionList[menuChoice - 1];
+    return question_list[menu_choice - 1];
 };
 
-void Exercise::runQuestion(std::function<void()> runnableQuestionExec){
+void Exercise::RunQuestion(std::function<void()> RunnableQuestionExec){
     system("CLS");
     
-    runnableQuestionExec();
+    RunnableQuestionExec();
 };
