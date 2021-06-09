@@ -1,11 +1,13 @@
 set(SERVICES_SOURCE_LIST ${TLC_SOURCE_DIR}/src/services/ui_handler.cpp
                          ${TLC_SOURCE_DIR}/src/services/prompt_handler.cpp
+                         ${TLC_SOURCE_DIR}/src/services/math_handler.cpp
 )
 
 set(SERVICES_HEADER_LIST ${TLC_SOURCE_DIR}/include/services/ui_handler.h
                          ${TLC_SOURCE_DIR}/include/services/prompt_handler.h
                          ${TLC_SOURCE_DIR}/include/services/random_generator.h
                          ${TLC_SOURCE_DIR}/include/services/vector_handler.h
+                         ${TLC_SOURCE_DIR}/include/services/math_handler.h
 )
                   
 add_library(services_library STATIC ${SERVICES_SOURCE_LIST}
