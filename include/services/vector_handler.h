@@ -104,7 +104,7 @@ namespace vectorhandler {
     void ShowMultidimensionalVector(multidimensional::Vector<TVector> matrix,
                                     std::vector<size_t> matrix_dimensions,
                                     std::string matrix_title = "Matrix",
-                                    int matrix_max_value = 10){
+                                    int matrix_max_digits = 3){
         std::vector<size_t> indices(matrix_dimensions.size(), 0),
                             current_dimensions(matrix_dimensions.size(), 0);
 
@@ -126,7 +126,7 @@ namespace vectorhandler {
                 }
             }
 
-            std::cout << std::setw(mathhandler::CountDigits(matrix_max_value) + 1) << matrix[indices];
+            std::cout << std::setw(matrix_max_digits) << matrix[indices];
 
             bool is_last_element = true;
 
