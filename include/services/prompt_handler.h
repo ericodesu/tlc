@@ -26,7 +26,7 @@ namespace prompthandler {
         }while(conditional(user_input) == false);
 
         return user_input;
-    }
+    };
 };
 
 #endif
