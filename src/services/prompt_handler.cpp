@@ -14,14 +14,15 @@ bool prompthandler::ShowTryAgain(std::string try_again_message){
 
     std::cin >> user_try_choice;
 
-    std::transform(user_try_choice.begin(),
-                   user_try_choice.end(),
-                   user_try_choice.begin(),
-                   std::toupper
+    std::transform(
+        user_try_choice.begin(),
+        user_try_choice.end(),
+        user_try_choice.begin(),
+        std::toupper
     );
 
     return user_try_choice == "Y" || user_try_choice == "YES";
-}
+};
 
 void prompthandler::ShowMenu(){
     bool is_running = true;
@@ -34,8 +35,8 @@ void prompthandler::ShowMenu(){
         "p13"
     };
 
-    int MIN_MENU_CHOICE_VALUE = 1,
-        MAX_MENU_CHOICE_VALUE = MENU_AVAILABLE_CHOICES.size();
+    int MIN_MENU_CHOICE = 1,
+        MAX_MENU_CHOICE = MENU_AVAILABLE_CHOICES.size();
 
     do{
         system("CLS");
@@ -48,12 +49,12 @@ void prompthandler::ShowMenu(){
 
         uihandler::ShowBarsLine(28);
 
-        while(menu_choice < MIN_MENU_CHOICE_VALUE || menu_choice > MAX_MENU_CHOICE_VALUE){
-            std::cout << "\n\nInsert an exercise between [" << MIN_MENU_CHOICE_VALUE << " - " << MAX_MENU_CHOICE_VALUE << "]: " ;
+        while(menu_choice < MIN_MENU_CHOICE || menu_choice > MAX_MENU_CHOICE){
+            std::cout << "\n\nInsert an exercise between [" << MIN_MENU_CHOICE << " - " << MAX_MENU_CHOICE << "]: " ;
             std::cin >> menu_choice;
 
-            if(menu_choice < MIN_MENU_CHOICE_VALUE || menu_choice > MAX_MENU_CHOICE_VALUE){
-                std::cout << "\nYou inserted " << menu_choice << " please insert values between [" << MIN_MENU_CHOICE_VALUE << " - " << MAX_MENU_CHOICE_VALUE << "]";
+            if(menu_choice < MIN_MENU_CHOICE || menu_choice > MAX_MENU_CHOICE){
+                std::cout << "\nYou inserted " << menu_choice << " please insert values between [" << MIN_MENU_CHOICE << " - " << MAX_MENU_CHOICE << "]";
             }
         }
 
@@ -95,4 +96,4 @@ void prompthandler::ShowMenu(){
 
         system("CLS");
     }while(is_running == true);
-}
+};

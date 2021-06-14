@@ -9,20 +9,20 @@
 #include <cmath>
 #include <algorithm>
 
-#define DRAWN_FLOOR_VALUE 1
-#define DRAWN_ROOF_VALUE 100
+#define DRAWN_FLOOR 1
+#define DRAWN_ROOF 100
 
 #define PI21 3.141592653589793238462
-#define ERROR_FLOOR_VALUE 2
-#define ERROR_ROOF_VALUE 20
+#define ERROR_FLOOR 2
+#define ERROR_ROOF 20
 
 void FifthExercise::ExecQ1(){
     //Setting random number seed
     srand(0);
 
     int drawn_number = 0,
-        current_drawn_floor_value = DRAWN_FLOOR_VALUE,
-        current_drawn_roof_value = DRAWN_ROOF_VALUE,
+        current_drawn_floor = DRAWN_FLOOR,
+        current_drawn_roof = DRAWN_ROOF,
         user_guess,
         user_total_tries = 1;
         
@@ -31,11 +31,11 @@ void FifthExercise::ExecQ1(){
     std::cout << "This App simulates a guessing game!\n";
 
     do{
-        user_guess = DRAWN_FLOOR_VALUE - 1;
+        user_guess = DRAWN_FLOOR - 1;
 
-        std::cout << "\nA number between " << DRAWN_FLOOR_VALUE << " and " << DRAWN_ROOF_VALUE << " will be drawn, your job is to guess it out...!";
+        std::cout << "\nA number between " << DRAWN_FLOOR << " and " << DRAWN_ROOF << " will be drawn, your job is to guess it out...!";
 
-        drawn_number = rand() % (DRAWN_ROOF_VALUE + DRAWN_FLOOR_VALUE);
+        drawn_number = rand() % (DRAWN_ROOF + DRAWN_FLOOR);
         
         do{
             do{
@@ -43,19 +43,19 @@ void FifthExercise::ExecQ1(){
 
                 std::cin >> user_guess;
 
-                if(user_guess < current_drawn_floor_value || user_guess > current_drawn_roof_value){
-                    std::cout << "Invalid guess! Range:[" << current_drawn_floor_value << "," << current_drawn_roof_value << "]";
+                if(user_guess < current_drawn_floor || user_guess > current_drawn_roof){
+                    std::cout << "Invalid guess! Range:[" << current_drawn_floor << "," << current_drawn_roof << "]";
                 }
-            }while(user_guess < current_drawn_floor_value || user_guess > current_drawn_roof_value);
+            }while(user_guess < current_drawn_floor || user_guess > current_drawn_roof);
 
             if(user_guess != drawn_number){
                 std::string tip_number_order = "less";
 
                 if(user_guess < drawn_number){
                     tip_number_order = "greater";
-                    current_drawn_floor_value = user_guess + 1;
+                    current_drawn_floor = user_guess + 1;
                 }else{
-                    current_drawn_roof_value = user_guess - 1;
+                    current_drawn_roof = user_guess - 1;
                 }
 
                 std::cout << "Tip number " << user_total_tries << ": the drawn number is " << tip_number_order << " than " << user_guess;
@@ -87,52 +87,58 @@ void FifthExercise::ExecQ2(){
 
         int user_choice = 0;
 
-        double error_value = 0;
+        double error = 0;
 
         do{
-            std::cout << "\nInsert a value between (" << ERROR_FLOOR_VALUE << "-" << ERROR_ROOF_VALUE << "):  ";
+            std::cout << "\nInsert a value between (" << ERROR_FLOOR << "-" << ERROR_ROOF << "):  ";
             std::cin >> user_choice;
 
-            if(user_choice < ERROR_FLOOR_VALUE || user_choice > ERROR_ROOF_VALUE){
-                std::cout << "You inserted a invalid value, please insert a value between (" << ERROR_FLOOR_VALUE << "-" << ERROR_ROOF_VALUE << ")";
+            if(user_choice < ERROR_FLOOR || user_choice > ERROR_ROOF){
+                std::cout << "You inserted a invalid value, please insert a value between (" << ERROR_FLOOR << "-" << ERROR_ROOF << ")";
             }
-        }while(user_choice < ERROR_FLOOR_VALUE || user_choice > ERROR_ROOF_VALUE);
+        }while(user_choice < ERROR_FLOOR || user_choice > ERROR_ROOF);
 
-        error_value = std::pow(10, - user_choice);
+        error = std::pow(10, - user_choice);
 
-        std::printf("You've choosen the error < %g", error_value);
+        std::printf("You've choosen the error < %g", error);
 
         has_partial_results = prompthandler::ShowTryAgain("Want to watch the parcial results?");
 
-        int current_iteration_value = 1;
+        int current_iteration = 1;
 
-        double current_PI_value = 3,
-               current_error = PI21 - current_PI_value,
+        double current_PI = 3,
+               current_error = PI21 - current_PI,
                current_summation = 0;
 
-        std::string current_error_value_string = "",
-                    middle_title_spacing = std::string((ERROR_ROOF_VALUE / 2) - 1, ' '),
-                    last_title_spacing = std::string((ERROR_ROOF_VALUE) - 3, ' ');
+        std::string current_iteration_display = "\n%5d",
+                    current_pi_display = "",
+                    current_error_display = "",
+                    current_status_display = "",
+                    middle_title_spacing = std::string((ERROR_ROOF / 2) - 1, ' '),
+                    last_title_spacing = std::string((ERROR_ROOF) - 3, ' ');
     
         std::cout << "\n    N" << middle_title_spacing << "Calculated PI" << last_title_spacing << "Error";
 
-        while(std::fabs(current_error) >= error_value){
-            current_error_value_string = "\n%5d %" + std::to_string(ERROR_ROOF_VALUE) + "." + std::to_string(user_choice + 1) + "f %" + std::to_string(ERROR_ROOF_VALUE) + "." + std::to_string(user_choice + 1) + "f";
+        while(std::fabs(current_error) >= error){
+            current_pi_display = "%" + std::to_string(ERROR_ROOF) + "." + std::to_string(user_choice + 1) + "f";
+            current_error_display = "%" + std::to_string(ERROR_ROOF) + "." + std::to_string(user_choice + 1) + "f";
+
+            current_status_display = current_iteration_display + current_pi_display + current_error_display;
 
             if(has_partial_results == true){
-                std::printf(current_error_value_string.c_str(), current_iteration_value, current_PI_value, current_error);
+                std::printf(current_status_display.c_str(), current_iteration, current_PI, current_error);
             }
 
-            current_summation = ((std::pow(-1, (current_iteration_value + 1))) * 4) / ((2 * current_iteration_value) * ((2 * current_iteration_value) + 1) * ((2 * current_iteration_value) + 2));
+            current_summation = ((std::pow(-1, (current_iteration + 1))) * 4) / ((2 * current_iteration) * ((2 * current_iteration) + 1) * ((2 * current_iteration) + 2));
 
-            current_PI_value = current_PI_value + current_summation;
+            current_PI = current_PI + current_summation;
             
-            current_error = current_PI_value - PI21;
+            current_error = current_PI - PI21;
 
-            current_iteration_value ++;
+            current_iteration ++;
         }
 
-        std::printf(current_error_value_string.c_str(), current_iteration_value, current_PI_value, current_error);
+        std::printf(current_status_display.c_str(), current_iteration, current_PI, current_error);
 
         is_another_try = prompthandler::ShowTryAgain("Want another run?");
     }while(is_another_try == true);

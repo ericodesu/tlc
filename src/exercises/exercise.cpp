@@ -7,8 +7,8 @@
 
 void Exercise::SetQuestionList(std::vector<Question> new_question_list){
     Exercise::question_list = new_question_list;
-}
-;
+};
+
 std::vector<Question> Exercise::GetQuestionList(){
     return Exercise::question_list;
 };
@@ -48,8 +48,8 @@ Question Exercise::ExecQuestionsMenu(std::vector<Question> question_list){
     return question_list[menu_choice - 1];
 };
 
-void Exercise::RunQuestion(std::function<void()> RunnableQuestionExec){
+void Exercise::RunQuestion(std::function<void()> RunnableQuestion){
     system("CLS");
     
-    RunnableQuestionExec();
+    RunnableQuestion();
 };
