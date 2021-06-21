@@ -1,3 +1,3 @@
-add_executable(TLC main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
-target_link_libraries(TLC PRIVATE services_library exercises_library)
+target_link_libraries(${PROJECT_NAME} my_library)

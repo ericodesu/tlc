@@ -1,56 +1,60 @@
-set(SERVICES_SOURCE_LIST ${TLC_SOURCE_DIR}/src/services/ui_handler.cpp
-                         ${TLC_SOURCE_DIR}/src/services/prompt_handler.cpp
-                         ${TLC_SOURCE_DIR}/src/services/math_handler.cpp
+#### START INTERNAL LIBRARIES ####
+
+set(SERVICES_HEADER_LIST "${PROJECT_SOURCE_DIR}/include/services/ui_handler.h"
+                         "${PROJECT_SOURCE_DIR}/include/services/prompt_handler.h"
+                         "${PROJECT_SOURCE_DIR}/include/services/random_generator.h"
+                         "${PROJECT_SOURCE_DIR}/include/services/vector_handler.h"
+                         "${PROJECT_SOURCE_DIR}/include/services/math_handler.h"
 )
 
-set(SERVICES_HEADER_LIST ${TLC_SOURCE_DIR}/include/services/ui_handler.h
-                         ${TLC_SOURCE_DIR}/include/services/prompt_handler.h
-                         ${TLC_SOURCE_DIR}/include/services/random_generator.h
-                         ${TLC_SOURCE_DIR}/include/services/vector_handler.h
-                         ${TLC_SOURCE_DIR}/include/services/math_handler.h
-)
-                  
-add_library(services_library STATIC ${SERVICES_SOURCE_LIST}
-                                    ${SERVICES_HEADER_LIST}
+set(SERVICES_SOURCE_LIST "${PROJECT_SOURCE_DIR}/src/services/ui_handler.cpp"
+                         "${PROJECT_SOURCE_DIR}/src/services/prompt_handler.cpp"
+                         "${PROJECT_SOURCE_DIR}/src/services/math_handler.cpp"
 )
 
-target_include_directories(services_library PUBLIC ../include)
-
-target_compile_features(services_library PUBLIC cxx_std_17)
-
-set(EXERCISES_SOURCE_LIST ${TLC_SOURCE_DIR}/src/exercises/list/fifth.cpp
-                          ${TLC_SOURCE_DIR}/src/exercises/list/eighth.cpp
-                          ${TLC_SOURCE_DIR}/src/exercises/list/ninth.cpp
-                          ${TLC_SOURCE_DIR}/src/exercises/list/tenth.cpp
-                          ${TLC_SOURCE_DIR}/src/exercises/list/thirteenth.cpp
-                          ${TLC_SOURCE_DIR}/src/exercises/exercise.cpp
-                          ${TLC_SOURCE_DIR}/src/exercises/exercises.cpp
-                          ${TLC_SOURCE_DIR}/src/exercises/question.cpp
+set(EXERCISES_HEADER_LIST "${PROJECT_SOURCE_DIR}/include/exercises/list/fifth.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/list/eighth.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/list/ninth.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/list/tenth.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/list/thirteenth.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/interfaces/exercise_interface.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/interfaces/question_interface.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/exercise.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/exercises.h"
+                          "${PROJECT_SOURCE_DIR}/include/exercises/question.h"
 )
 
-set(EXERCISES_HEADER_LIST ${TLC_SOURCE_DIR}/include/exercises/list/fifth.h
-                          ${TLC_SOURCE_DIR}/include/exercises/list/eighth.h
-                          ${TLC_SOURCE_DIR}/include/exercises/list/ninth.h
-                          ${TLC_SOURCE_DIR}/include/exercises/list/tenth.h
-                          ${TLC_SOURCE_DIR}/include/exercises/list/thirteenth.h
-                          ${TLC_SOURCE_DIR}/include/exercises/interfaces/exercise_interface.h
-                          ${TLC_SOURCE_DIR}/include/exercises/interfaces/question_interface.h
-                          ${TLC_SOURCE_DIR}/include/exercises/exercise.h
-                          ${TLC_SOURCE_DIR}/include/exercises/exercises.h
-                          ${TLC_SOURCE_DIR}/include/exercises/question.h
+set(EXERCISES_SOURCE_LIST "${PROJECT_SOURCE_DIR}/src/exercises/list/fifth.cpp"
+                          "${PROJECT_SOURCE_DIR}/src/exercises/list/eighth.cpp"
+                          "${PROJECT_SOURCE_DIR}/src/exercises/list/ninth.cpp"
+                          "${PROJECT_SOURCE_DIR}/src/exercises/list/tenth.cpp"
+                          "${PROJECT_SOURCE_DIR}/src/exercises/list/thirteenth.cpp"
+                          "${PROJECT_SOURCE_DIR}/src/exercises/exercise.cpp"
+                          "${PROJECT_SOURCE_DIR}/src/exercises/exercises.cpp"
+                          "${PROJECT_SOURCE_DIR}/src/exercises/question.cpp"
 )
 
-add_library(exercises_library STATIC ${EXERCISES_SOURCE_LIST}
-                                     ${EXERCISES_HEADER_LIST}
+add_library(my_library ${SERVICES_HEADER_LIST}
+                       ${SERVICES_SOURCE_LIST}
+                       ${EXERCISES_HEADER_LIST}
+                       ${EXERCISES_SOURCE_LIST}
 )
 
-target_include_directories(exercises_library PUBLIC ../include)
+target_include_directories(my_library PUBLIC "${PROJECT_SOURCE_DIR}/include")
 
-target_compile_features(exercises_library PUBLIC cxx_std_17)
+#### END INTERNAL LIBRARIES ####
 
-source_group(
-  TREE "${TLC_SOURCE_DIR}/include"
-  PREFIX "Header Files"
-  FILES ${SERVICES_HEADER_LIST}
-        ${EXERCISES_HEADER_LIST}
-)
+#### START EXTERNAL LIBRARIES ####
+
+add_definitions(-DMAGICKCORE_QUANTUM_DEPTH=16)
+add_definitions(-DMAGICKCORE_HDRI_ENABLE=0)
+
+find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
+
+target_include_directories(my_library PUBLIC ${ImageMagick_INCLUDE_DIRS})
+
+target_link_libraries(my_library ${ImageMagick_LIBRARIES})
+
+#### END EXTERNAL LIBRARIES ####
+
+set_target_properties(my_library PROPERTIES LINKER_LANGUAGE CXX)
