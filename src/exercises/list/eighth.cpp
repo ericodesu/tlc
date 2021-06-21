@@ -5,10 +5,10 @@
 #include <string>
 
 void EighthExercise::ExecQ1(){
-    const int ASCII_UPPER_CODE_FLOOR_VALUE = int('A'),
-              ASCII_LOWER_CODE_FLOOR_VALUE = int('a'),
-              ASCII_LOWER_CODE_ROOF_VALUE = int('z'),
-              ASCII_CODE_DIFF = (int('a') - int('A'));
+    constexpr int ASCII_UPPER_CODE_FLOOR = int('A'),
+                  ASCII_LOWER_CODE_FLOOR = int('a'),
+                  ASCII_LOWER_CODE_ROOF = int('z'),
+                  ASCII_CODE_DIFF = (int('a') - int('A'));
 
     bool is_another_try = true;
 
@@ -33,11 +33,11 @@ void EighthExercise::ExecQ1(){
             if(current_char_code != space_char_code){
                 if(is_current_chunk_modified == false &&
                     (
-                        user_phrase[current_char_index] >= ASCII_UPPER_CODE_FLOOR_VALUE &&
-                        user_phrase[current_char_index] <= ASCII_LOWER_CODE_ROOF_VALUE
+                        user_phrase[current_char_index] >= ASCII_UPPER_CODE_FLOOR &&
+                        user_phrase[current_char_index] <= ASCII_LOWER_CODE_ROOF
                     )
                 ){
-                    if(current_char_code >= ASCII_LOWER_CODE_FLOOR_VALUE){
+                    if(current_char_code >= ASCII_LOWER_CODE_FLOOR){
                         modified_phrase[current_char_index] = char((current_char_code - ASCII_CODE_DIFF));
                     }else{
                         modified_phrase[current_char_index] = char((current_char_code + ASCII_CODE_DIFF));

@@ -32,19 +32,19 @@ namespace vectorhandler {
         template <typename T>
         class Vector {
             private:
-                std::vector<size_t> _dims;
+                std::vector<uint32_t> _dims;
                 std::vector<T> _data;
 
             public:
-                Vector(const std::vector<size_t> &dims): _dims(dims){
-                    size_t size = _dims.empty() ? 0 : 1;
+                Vector(const std::vector<uint32_t> &dims): _dims(dims){
+                    uint32_t size = _dims.empty() ? 0 : 1;
 
-                    for (size_t dim : _dims) size *= dim;
+                    for (uint32_t dim : _dims) size *= dim;
                         _data.resize(size);
                 }
 
                 Vector(
-                    const std::vector<size_t> &dims,
+                    const std::vector<uint32_t> &dims,
                     const std::vector<T> &data
                 ): Vector<T>(dims){
                     assert(_data.size() == data.size());
@@ -52,11 +52,11 @@ namespace vectorhandler {
                     std::copy(data.begin(), data.end(), _data.begin());
                 }
 
-                T& operator[](const std::vector<size_t> &indices){
-                    size_t i = 0,
+                T& operator[](const std::vector<uint32_t> &indices){
+                    uint32_t i = 0,
                            j = 0;
 
-                    for(size_t n = _dims.size(); j < n; ++j){
+                    for(uint32_t n = _dims.size(); j < n; ++j){
                         i *= _dims[j];
                         i += indices[j];
                     }
@@ -64,11 +64,11 @@ namespace vectorhandler {
                     return _data[i];
                 }
 
-                const T& operator[](const std::vector<size_t> &indices) const{
-                    size_t i = 0,
+                const T& operator[](const std::vector<uint32_t> &indices) const{
+                    uint32_t i = 0,
                            j = 0;
 
-                    for (size_t n = _dims.size(); j < n; ++j){
+                    for (uint32_t n = _dims.size(); j < n; ++j){
                         i *= _dims[j];
                         i += indices[j];
                     }
@@ -77,8 +77,8 @@ namespace vectorhandler {
                 }
         };
 
-        bool inc(std::vector<size_t> &indices, const std::vector<size_t> &dims){
-            for(size_t i = indices.size(); i--;){
+        bool inc(std::vector<uint32_t> &indices, const std::vector<uint32_t> &dims){
+            for(uint32_t i = indices.size(); i--;){
                 if(++indices[i] < dims[i]){
                     return false;
                 }
@@ -88,34 +88,40 @@ namespace vectorhandler {
 
             return true;
         };
-    }
+    };
 
     template <class TVector>
-    multidimensional::Vector<TVector> CreateMultidimensionalVector(std::vector<size_t> vector_dimensions){
+    multidimensional::Vector<TVector> CreateMultidimensionalVector(std::vector<uint32_t> vector_dimensions){
         return multidimensional::Vector<TVector>(vector_dimensions);
     };
 
     template <class TVector>
-    std::vector<TVector> CreateUnidimensionalVector(size_t vector_size){
+    std::vector<TVector> CreateUnidimensionalVector(uint32_t vector_size){
         return std::vector<TVector>(vector_size, 0);
     };
 
     template <class TVector>
-    void ShowMultidimensionalVector(multidimensional::Vector<TVector> matrix,
-                                    std::vector<size_t> matrix_dimensions,
-                                    std::string matrix_title = "Matrix",
-                                    int matrix_max_digits = 3){
-        std::vector<size_t> indices(matrix_dimensions.size(), 0),
-                            current_dimensions(matrix_dimensions.size(), 0);
+    void ShowMultidimensionalVector(
+        multidimensional::Vector<TVector> matrix,
+        std::vector<uint32_t> matrix_dimensions,
+        std::string matrix_title = "Matrix",
+        int matrix_max_digits = 3
+    ){
+        std::vector<uint32_t> indices(matrix_dimensions.size(), 0),
+                              current_dimensions(matrix_dimensions.size(), 0);
 
         std::cout << matrix_title;
 
         do{
-            for(int current_dimension_index = 1; current_dimension_index < matrix_dimensions.size(); current_dimension_index++){
-                size_t current_dimension_roof_value = matrix_dimensions[current_dimension_index],
-                       current_dimension_value = current_dimensions[current_dimension_index];
+            for(
+                int current_dimension_index = 1;
+                current_dimension_index < matrix_dimensions.size();
+                current_dimension_index++
+            ){
+                uint32_t current_dimension_roof = matrix_dimensions[current_dimension_index],
+                       current_dimension = current_dimensions[current_dimension_index];
 
-                if(current_dimension_value == current_dimension_roof_value){
+                if(current_dimension == current_dimension_roof){
                     current_dimensions[current_dimension_index] = 1;
 
                     if(current_dimension_index == 1){
@@ -130,11 +136,15 @@ namespace vectorhandler {
 
             bool is_last_element = true;
 
-            for(int current_dimension_index = 1; current_dimension_index < matrix_dimensions.size(); current_dimension_index++){
-                size_t current_dimension_roof_value = matrix_dimensions[current_dimension_index],
-                       current_indice_value = indices[current_dimension_index];
+            for(
+                int current_dimension_index = 1;
+                current_dimension_index < matrix_dimensions.size();
+                current_dimension_index++
+            ){
+                uint32_t current_dimension_roof = matrix_dimensions[current_dimension_index],
+                         current_indice = indices[current_dimension_index];
 
-                if(current_indice_value != current_dimension_roof_value - 1){
+                if(current_indice != current_dimension_roof - 1){
                     is_last_element = false;
                 }
             }

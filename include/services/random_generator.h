@@ -26,12 +26,13 @@ namespace randomgenerator {
         UniformDistribution<TDraw> dist6(draw_floor, draw_roof);
 
         return dist6(mt);
-    }
+    };
 
     template <class TDraw>
-    std::vector<TDraw> UnidimensionalVector(size_t draw_size,
-                                            TDraw draw_floor = 1,
-                                            TDraw draw_roof = 100
+    std::vector<TDraw> UnidimensionalVector(
+        uint32_t draw_size,
+        TDraw draw_floor = 1,
+        TDraw draw_roof = 100
     ){
         std::vector<TDraw> drawn_vector = vectorhandler::CreateUnidimensionalVector<TDraw>(draw_size);
         
@@ -43,13 +44,14 @@ namespace randomgenerator {
     };
 
     template <class TDraw>
-    vectorhandler::multidimensional::Vector<TDraw> MultidimensionalVector(std::vector<size_t> draw_dimensions,
-                                                                          TDraw draw_floor = 1,
-                                                                          TDraw draw_roof = 100
+    vectorhandler::multidimensional::Vector<TDraw> MultidimensionalVector(
+        std::vector<uint32_t> draw_dimensions,
+        TDraw draw_floor = 1,
+        TDraw draw_roof = 100
     ){
         vectorhandler::multidimensional::Vector<TDraw> drawn_vector = vectorhandler::CreateMultidimensionalVector<TDraw>(draw_dimensions);
         
-        std::vector<size_t> indices(draw_dimensions.size(), 0);
+        std::vector<uint32_t> indices(draw_dimensions.size(), 0);
 
         do{
             drawn_vector[indices] = Number(draw_floor, draw_roof);

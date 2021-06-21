@@ -44,10 +44,12 @@ include/divisible/*
 
 
 ## Local 
+.vs/
 .vscode/
 .idea/*.xml
 
 build/**/*
+out/
 
 bin/*
 test/test_runner
