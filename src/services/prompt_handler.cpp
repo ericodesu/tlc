@@ -99,7 +99,7 @@ void prompthandler::ShowMenu(){
 };
 
 void prompthandler::ClearScreen(){
-    #ifdef WINDOWS
+    #ifdef _WINDOWS
         std::system("cls");
     #else
         std::system("clear");
