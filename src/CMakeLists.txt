@@ -49,7 +49,7 @@ target_include_directories(my_library PUBLIC "${PROJECT_SOURCE_DIR}/include")
 IF(WIN32)
     set(OpenCV_DIR "C:/OpenCV/build/")
 ELSE()
-    set(OpenCV_DIR "/usr/local/lib/OpenCV/build/")
+    set(OpenCV_DIR "/usr/local/")
 ENDIF()
 
 find_package(OpenCV REQUIRED PATHS "${PROJECT_SOURCE_DIR}/cmake")
