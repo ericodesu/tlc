@@ -46,6 +46,18 @@ target_include_directories(my_library PUBLIC "${PROJECT_SOURCE_DIR}/include")
 
 #### START EXTERNAL LIBRARIES ####
 
+IF(WIN32)
+    set(OpenCV_DIR "C:/OpenCV/build/")
+ELSE()
+    set(OpenCV_DIR "/usr/local/lib/OpenCV/build/")
+ENDIF()
+
+find_package(OpenCV REQUIRED PATHS "${PROJECT_SOURCE_DIR}/cmake")
+
+target_include_directories(my_library PUBLIC ${OpenCV_INCLUDE_DIRS})
+
+target_link_libraries(my_library ${OpenCV_LIBS})
+
 #### END EXTERNAL LIBRARIES ####
 
 target_compile_features(my_library PUBLIC cxx_std_17)
