@@ -18,7 +18,7 @@ bool prompthandler::ShowTryAgain(std::string try_again_message){
         user_try_choice.begin(),
         user_try_choice.end(),
         user_try_choice.begin(),
-        std::toupper
+        ::toupper
     );
 
     return user_try_choice == "Y" || user_try_choice == "YES";
@@ -39,7 +39,7 @@ void prompthandler::ShowMenu(){
         MAX_MENU_CHOICE = MENU_AVAILABLE_CHOICES.size();
 
     do{
-        system("CLS");
+        ClearScreen();
 
         int menu_choice = 0;
 
@@ -58,7 +58,7 @@ void prompthandler::ShowMenu(){
             }
         }
 
-        system("CLS");
+        ClearScreen();
 
         switch (menu_choice){
             case 1:
@@ -94,6 +94,14 @@ void prompthandler::ShowMenu(){
 
         is_running = prompthandler::ShowTryAgain("Do you want to run another question?");
 
-        system("CLS");
+        ClearScreen();
     }while(is_running == true);
+};
+
+void prompthandler::ClearScreen(){
+    #ifdef WINDOWS
+        std::system("cls");
+    #else
+        std::system("clear");
+    #endif
 };

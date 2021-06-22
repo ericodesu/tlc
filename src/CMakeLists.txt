@@ -46,15 +46,8 @@ target_include_directories(my_library PUBLIC "${PROJECT_SOURCE_DIR}/include")
 
 #### START EXTERNAL LIBRARIES ####
 
-add_definitions(-DMAGICKCORE_QUANTUM_DEPTH=16)
-add_definitions(-DMAGICKCORE_HDRI_ENABLE=0)
-
-find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
-
-target_include_directories(my_library PUBLIC ${ImageMagick_INCLUDE_DIRS})
-
-target_link_libraries(my_library ${ImageMagick_LIBRARIES})
-
 #### END EXTERNAL LIBRARIES ####
+
+target_compile_features(my_library PUBLIC cxx_std_17)
 
 set_target_properties(my_library PROPERTIES LINKER_LANGUAGE CXX)

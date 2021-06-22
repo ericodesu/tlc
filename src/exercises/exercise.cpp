@@ -1,6 +1,7 @@
 #include <exercises/exercise.h>
 #include <exercises/question.h>
 #include <services/ui_handler.h>
+#include <services/prompt_handler.h>
 
 #include <iostream>
 #include <vector>
@@ -49,7 +50,7 @@ Question Exercise::ExecQuestionsMenu(std::vector<Question> question_list){
 };
 
 void Exercise::RunQuestion(std::function<void()> RunnableQuestion){
-    system("CLS");
+    prompthandler::ClearScreen();
     
     RunnableQuestion();
 };
