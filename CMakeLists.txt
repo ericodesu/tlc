@@ -9,4 +9,4 @@ project(
 
 add_subdirectory(apps)
 add_subdirectory(src)
-add_subdirectory(tools)
+add_subdirectory(resources)
