@@ -5,11 +5,13 @@ set(SERVICES_HEADER_LIST "${PROJECT_SOURCE_DIR}/include/services/ui_handler.h"
                          "${PROJECT_SOURCE_DIR}/include/services/random_generator.h"
                          "${PROJECT_SOURCE_DIR}/include/services/vector_handler.h"
                          "${PROJECT_SOURCE_DIR}/include/services/math_handler.h"
+                         "${PROJECT_SOURCE_DIR}/include/services/image_handler.h"
 )
 
 set(SERVICES_SOURCE_LIST "${PROJECT_SOURCE_DIR}/src/services/ui_handler.cpp"
                          "${PROJECT_SOURCE_DIR}/src/services/prompt_handler.cpp"
                          "${PROJECT_SOURCE_DIR}/src/services/math_handler.cpp"
+                         "${PROJECT_SOURCE_DIR}/src/services/image_handler.cpp"
 )
 
 set(EXERCISES_HEADER_LIST "${PROJECT_SOURCE_DIR}/include/exercises/list/fifth.h"
