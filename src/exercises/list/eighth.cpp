@@ -1,6 +1,8 @@
 #include <exercises/list/eighth.h>
 #include <services/prompt_handler.h>
 
+#include <limits>
+#include <cstdint>
 #include <iostream>
 #include <string>
 
@@ -22,7 +24,7 @@ void EighthExercise::ExecQ1(){
 
         std::wcout << "\nInsert a phrase: ";
         std::wcin.clear();
-        std::wcin.ignore(INT_MAX, '\n');
+        std::wcin.ignore(std::numeric_limits<std::int32_t>::max(), '\n');
         std::getline(std::wcin, user_phrase);
 
         modified_phrase = user_phrase;

@@ -8,6 +8,7 @@
 namespace prompthandler {
     bool ShowTryAgain(std::string try_again_message);
     void ShowMenu();
+    void ClearScreen();
     template<class T>
     T ShowQuestion(
         std::string question_message,

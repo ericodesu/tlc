@@ -5,11 +5,13 @@ set(SERVICES_HEADER_LIST "${PROJECT_SOURCE_DIR}/include/services/ui_handler.h"
                          "${PROJECT_SOURCE_DIR}/include/services/random_generator.h"
                          "${PROJECT_SOURCE_DIR}/include/services/vector_handler.h"
                          "${PROJECT_SOURCE_DIR}/include/services/math_handler.h"
+                         "${PROJECT_SOURCE_DIR}/include/services/image_handler.h"
 )
 
 set(SERVICES_SOURCE_LIST "${PROJECT_SOURCE_DIR}/src/services/ui_handler.cpp"
                          "${PROJECT_SOURCE_DIR}/src/services/prompt_handler.cpp"
                          "${PROJECT_SOURCE_DIR}/src/services/math_handler.cpp"
+                         "${PROJECT_SOURCE_DIR}/src/services/image_handler.cpp"
 )
 
 set(EXERCISES_HEADER_LIST "${PROJECT_SOURCE_DIR}/include/exercises/list/fifth.h"
@@ -46,15 +48,20 @@ target_include_directories(my_library PUBLIC "${PROJECT_SOURCE_DIR}/include")
 
 #### START EXTERNAL LIBRARIES ####
 
-add_definitions(-DMAGICKCORE_QUANTUM_DEPTH=16)
-add_definitions(-DMAGICKCORE_HDRI_ENABLE=0)
+IF(WIN32)
+    set(OpenCV_DIR "C:/OpenCV/build/")
+ELSE()
+    set(OpenCV_DIR "/usr/local/")
+ENDIF()
 
-find_package(ImageMagick COMPONENTS Magick++ REQUIRED)
+find_package(OpenCV REQUIRED PATHS "${PROJECT_SOURCE_DIR}/cmake")
 
-target_include_directories(my_library PUBLIC ${ImageMagick_INCLUDE_DIRS})
+target_include_directories(my_library PUBLIC ${OpenCV_INCLUDE_DIRS})
 
-target_link_libraries(my_library ${ImageMagick_LIBRARIES})
+target_link_libraries(my_library ${OpenCV_LIBS})
 
 #### END EXTERNAL LIBRARIES ####
+
+target_compile_features(my_library PUBLIC cxx_std_17)
 
 set_target_properties(my_library PROPERTIES LINKER_LANGUAGE CXX)
