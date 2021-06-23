@@ -7,7 +7,8 @@
 #include <string>
 
 void TenthExercise::ExecQ1(){
-    std::string image_path = "Resources/images/Pedestrian.png";
+    std::string resource_path = RESOURCE_FILE_DIR;
+    std::string image_path = resource_path + "/images/Pedestrian.png";
 
     cv::samples::findFile(image_path);
 
