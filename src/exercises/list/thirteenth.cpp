@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <functional>
+#include <limits>
 
 void ShowSortedByMonthCodivData(std::vector<std::vector<int>> covid_data){
     int initial_recurrent_deceases = covid_data[0][4],
@@ -57,7 +58,7 @@ void ShowSortedByMonthCodivData(std::vector<std::vector<int>> covid_data){
 std::vector<std::vector<int>> FilterCovidData(
             std::vector<std::vector<int>> covid_data,
             std::vector<int> data_floor_boundary = std::vector<int>(6, 0),
-            std::vector<int> data_roof_boundary = std::vector<int>(6, INT_MAX)
+            std::vector<int> data_roof_boundary = std::vector<int>(6, std::numeric_limits<int>::max())
 ){
     std::vector<std::vector<int>> filtered_covid_data;
 
@@ -81,7 +82,7 @@ std::vector<std::vector<int>> FilterCovidData(
 
             is_value_between_boundaries = (
                 (column_value >= floor_boundary_value || floor_boundary_value == 0) &&
-                (column_value <= roof_boundary_value || roof_boundary_value == INT_MAX)
+                (column_value <= roof_boundary_value || roof_boundary_value == std::numeric_limits<int>::max())
             );
 
             if(is_value_between_boundaries){
@@ -105,7 +106,7 @@ std::vector<int> GetCovidDataMinMax(
 ){
     std::vector<int> min_max_list(2, 0);
 
-    min_max_list[0] = INT_MAX;
+    min_max_list[0] = std::numeric_limits<int>::max();
 
     for(int row_index = 0; row_index < covid_data.size(); row_index++){
         std::vector<int> current_row = covid_data[row_index];
