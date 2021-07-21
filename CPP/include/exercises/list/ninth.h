@@ -1,5 +1,5 @@
-#ifndef TLC_INCLUDE_EXERCISES_LIST_NINTH_H
-#define TLC_INCLUDE_EXERCISES_LIST_NINTH_H
+#ifndef TLC_CPP_INCLUDE_EXERCISES_LIST_NINTH_H
+#define TLC_CPP_INCLUDE_EXERCISES_LIST_NINTH_H
 
 #include <exercises/exercise.h>
 #include <exercises/question.h>

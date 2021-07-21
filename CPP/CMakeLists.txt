@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20.3)
 
 project(
-    TLC
+    TLC_CPP
     VERSION 0.2
     LANGUAGES CXX
     DESCRIPTION "The Learning Channel for C++"

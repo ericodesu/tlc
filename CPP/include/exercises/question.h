@@ -1,5 +1,5 @@
-#ifndef TLC_INCLUDE_EXERCISES_QUESTION_H
-#define TLC_INCLUDE_EXERCISES_QUESTION_H
+#ifndef TLC_CPP_INCLUDE_EXERCISES_QUESTION_H
+#define TLC_CPP_INCLUDE_EXERCISES_QUESTION_H
 
 #include <exercises/interfaces/question_interface.h>
 

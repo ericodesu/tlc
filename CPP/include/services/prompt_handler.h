@@ -1,5 +1,5 @@
-#ifndef TLC_INCLUDE_PROMPT_HANDLER_H
-#define TLC_INCLUDE_PROMPT_HANDLER_H
+#ifndef TLC_CPP_INCLUDE_PROMPT_HANDLER_H
+#define TLC_CPP_INCLUDE_PROMPT_HANDLER_H
 
 #include <functional>
 #include <string>
