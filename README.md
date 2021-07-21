@@ -1,14 +1,16 @@
 # About
 
-Project in order to train my C++ skills
+Project in order to train my C++ and C# skills
 
-# Project requirements
+## C++
+
+### Project requirements
 
   - g++ - [Windows](https://sourceforge.net/projects/mingw/) | Linux [[Ubuntu](https://linuxize.com/post/how-to-install-gcc-on-ubuntu-20-04/)];
   - cmake - [Windows & Linux](https://cmake.org/download/) - Follow [this](https://cmake.org/install/) guide in order install it;
   - OpenCV - [Windows](https://sourceforge.net/projects/opencvlibrary/) | [Linux](https://docs.opencv.org/4.5.2/d7/d9f/tutorial_linux_install.html);
 
-# Installation information
+### Installation information
 
 There's a few things I'd like to point it out in order to run sucessfully in your machine:
 
