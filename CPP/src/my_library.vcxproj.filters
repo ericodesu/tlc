@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\services\ui_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\services\prompt_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\services\math_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\services\image_handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\exercises\list\fifth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\exercises\list\eighth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\exercises\list\ninth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\exercises\list\tenth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\exercises\list\thirteenth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\exercises\exercise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\exercises\exercises.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\exercises\question.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\services\ui_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\services\prompt_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\services\random_generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\services\vector_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\services\math_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\services\image_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\list\fifth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\list\eighth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\list\ninth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\list\tenth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\list\thirteenth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\interfaces\exercise_interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\interfaces\question_interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\exercise.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\exercises.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\include\exercises\question.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{938F2324-7E7B-3855-822A-8579085769E3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7C0F377C-C3F8-3A77-82AE-5F0FC667B499}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

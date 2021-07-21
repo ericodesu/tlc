@@ -48,8 +48,8 @@ include/divisible/*
 .vscode/
 .idea/*.xml
 
-build/**/*
-out/
+*/build/**/*
+*/out/
 
-bin/*
-test/test_runner
+*/bin/*
+*/test/test_runner
