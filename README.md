@@ -32,4 +32,4 @@ There's a few things I'd like to point it out in order to run sucessfully in you
 
 ### Project requirements
 
-   - Visual Studio Preview 2022 [Windows](https://visualstudio.microsoft.com/vs/preview/vs2022/#download-preview)
+   - Visual Studio Preview 2022 - [Windows](https://visualstudio.microsoft.com/vs/preview/vs2022/#download-preview)
