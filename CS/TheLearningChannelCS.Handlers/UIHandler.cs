@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TheLearningChannelCS.Handlers
 {
@@ -11,13 +12,34 @@ namespace TheLearningChannelCS.Handlers
             Console.WriteLine(boudaryBars);
         }
 
-        public static void RenderMenu()
+        public static void ClearBuffer()
         {
-            RenderBoundaryBars(10);
+            Console.Clear();
+        }
 
-            Console.WriteLine("MENU");
+        public static string RenderMenu(List<string> menuTitles, List<string> menuOptions)
+        {
+            ClearBuffer();
 
-            RenderBoundaryBars(10);
+            int barCount = 28;
+
+            RenderBoundaryBars(barCount);
+
+            menuTitles.ForEach(displayName => Console.WriteLine(displayName));
+
+            Console.WriteLine();
+
+            menuOptions.ForEach(menuOption => Console.WriteLine(menuOption));
+
+            RenderBoundaryBars(barCount);
+
+            bool OptionChoiceRestrainer(string optionChoice) => menuOptions.Exists(_ => _.Equals(optionChoice));
+
+            return InputHandler.GetUserRestrainedInput(
+                "Qual opção deseja escolher? ",
+                "Opção inválida !",
+                (Func<string, bool>)OptionChoiceRestrainer
+            );
         }
     }
 }

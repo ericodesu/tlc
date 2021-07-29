@@ -1,71 +1,35 @@
-﻿using System;
-using TheLearningChannelCS.Handlers;
+﻿using TheLearningChannelCS.Handlers;
+using TheLearningChannelCS.Common.Interfaces;
+using TheLearningChannelCS.Questions.FifthAssignment;
+using System.Collections.Generic;
 
 namespace TheLearningChannelCS.Assignments
 {
-    public class FifthAssignment
+    public class FifthAssignment : IAssignment
     {
-        private const int MIN_USER_CHOICE = 1;
-        private const int MAX_USER_CHOICE = 100;
+        private static readonly List<string> MENU_TITLES = new() { "MENU", "QUESTIONS" };
+        private static readonly List<string> AVAILABLE_QUESTIONS = new() { "q1", "q2" };
 
-        public static void ExecAssignment()
+        public IQuestion GetQuestion(string questionName)
         {
-            UIHandler.RenderMenu();
-
-            bool willTryAgain = true;
-
-            while (willTryAgain)
+            switch (questionName)
             {
-                int userChoice = 0;
-                int tryCount = 1;
-                int tryMinChoice = MIN_USER_CHOICE;
-                int tryMaxChoice = MAX_USER_CHOICE;
+                case "q1":
+                    return new FirstQuestion();
 
-                var randomGenerator = new Random();
+                case "q2":
+                    return new FirstQuestion();
 
-                int sortedNumber = randomGenerator.Next(MIN_USER_CHOICE, MAX_USER_CHOICE);
-
-                Console.WriteLine($"Será sorteado um número de {MIN_USER_CHOICE} e {MAX_USER_CHOICE} e você deverá descobrir qual... !");
-
-                while (userChoice != sortedNumber)
-                {
-                    if (userChoice != sortedNumber)
-                    {
-                        while (userChoice < tryMinChoice || userChoice > tryMaxChoice)
-                        {
-                            bool UserChoiceRestrainer(string userInput) => Int32.Parse(userInput) > tryMinChoice && Int32.Parse(userInput) < tryMaxChoice;
-
-                            userChoice = Int32.Parse(InputHandler.GetUserRestrainedInput(
-                                "Qual seu palpite? ",
-                                $"Palpite inválido ! Invervalo:[{tryMinChoice}, {tryMaxChoice}]",
-                                (Func<string, bool>)UserChoiceRestrainer
-                            ));
-                        }
-
-                        string userChoiceStatus = userChoice < sortedNumber ? "maior" : "menor";
-
-                        Console.WriteLine($"Dica número {tryCount} o número sorteado é {userChoiceStatus} que {userChoice}.");
-
-                        if (userChoice < sortedNumber)
-                        {
-                            tryMinChoice = userChoice + 1;
-                        }
-                        else
-                        {
-                            tryMaxChoice = userChoice - 1;
-                        }
-
-                        tryCount++;
-                    }
-
-                }
-
-                Console.WriteLine($"Número sorteado: {sortedNumber}");
-                Console.WriteLine($"Voce acertou na {tryCount}a tentativa");
-                Console.Write("Deseja jogar de novo? (S/N): ");
-
-                willTryAgain = InputHandler.GetUserTryAgainInput(Console.ReadKey().ToString());
+                default:
+                    return null;
             }
+        }
+
+        public void ExecAssignment()
+        {
+            string questionName = UIHandler.RenderMenu(MENU_TITLES, AVAILABLE_QUESTIONS);
+
+            GetQuestion(questionName).ExecQuestion();
         }
     }
 }

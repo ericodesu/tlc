@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -8,7 +8,6 @@
   <ItemGroup>
     <ProjectReference Include="..\TheLearningChannelCS.Common\TheLearningChannelCS.Common.csproj" />
     <ProjectReference Include="..\TheLearningChannelCS.Handlers\TheLearningChannelCS.Handlers.csproj" />
-    <ProjectReference Include="..\TheLearningChannelCS.Questions\TheLearningChannelCS.Questions.csproj" />
   </ItemGroup>
 
 </Project>
