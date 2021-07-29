@@ -27,3 +27,9 @@ There's a few things I'd like to point it out in order to run sucessfully in you
        - Linux environments:
 
           - The project assumes that your installation it's done at the ```/usr/local/``` directory (this is where the library it's installed by default).    
+
+## C#
+
+### Project requirements
+
+   - Visual Studio Preview 2022 - [Windows](https://visualstudio.microsoft.com/vs/preview/vs2022/#download-preview)
