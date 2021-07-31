@@ -15,11 +15,11 @@ namespace TheLearningChannelCS.Questions.FifthAssignment
 
             while (userChoice < tryMinChoice || userChoice > tryMaxChoice)
             {
-                bool UserChoiceRestrainer(string userInput) => Int32.Parse(userInput) > tryMinChoice && Int32.Parse(userInput) < tryMaxChoice;
+                bool UserChoiceRestrainer(string userInput) => Int32.Parse(userInput) >= tryMinChoice && Int32.Parse(userInput) <= tryMaxChoice;
 
                 userChoice = Int32.Parse(InputHandler.GetUserRestrainedInput(
-                    "Qual seu palpite? ",
-                    $"Palpite inválido ! Invervalo:[{tryMinChoice}, {tryMaxChoice}]",
+                    "Which is your guess? ",
+                    $"Invalid guess ! Valid range:[{tryMinChoice}, {tryMaxChoice}]",
                     UserChoiceRestrainer
                 ));
             }
@@ -42,17 +42,17 @@ namespace TheLearningChannelCS.Questions.FifthAssignment
 
                 int sortedNumber = randomGenerator.Next(MIN_USER_INPUT, MAX_USER_INPUT);
 
-                Console.WriteLine($"Será sorteado um número de {MIN_USER_INPUT} e {MAX_USER_INPUT} e você deverá descobrir qual... !");
+                Console.WriteLine($"A number will be drawn from {MIN_USER_INPUT} to {MAX_USER_INPUT} and your task is to find it out...!");
 
                 while (userInput != sortedNumber)
                 {
+                    userInput = GetUserChoice(userInput, tryMinInput, tryMaxInput);
+
                     if (userInput != sortedNumber)
                     {
-                        userInput = GetUserChoice(userInput, tryMinInput, tryMaxInput);
+                        string userChoiceStatus = userInput < sortedNumber ? "bigger" : "smaller";
 
-                        string userChoiceStatus = userInput < sortedNumber ? "maior" : "menor";
-
-                        Console.WriteLine($"Dica número {tryCount} o número sorteado é {userChoiceStatus} que {userInput}.");
+                        Console.WriteLine($"Tip number {tryCount} the drawn number is {userChoiceStatus} than {userInput}.");
 
                         if (userInput < sortedNumber)
                         {
@@ -68,11 +68,10 @@ namespace TheLearningChannelCS.Questions.FifthAssignment
 
                 }
 
-                Console.WriteLine($"Número sorteado: {sortedNumber}");
-                Console.WriteLine($"Voce acertou na {tryCount}a tentativa");
-                Console.Write("Deseja jogar de novo? (S/N): ");
+                Console.WriteLine($"\nDrawn number: {sortedNumber}");
+                Console.WriteLine($"It took you {tryCount} tries");
 
-                willTryAgain = InputHandler.GetUserTryAgainInput(Console.ReadKey().ToString());
+                willTryAgain = InputHandler.GetUserTryAgainInput("Do you want to play again?");
             }
         }
     }

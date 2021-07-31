@@ -27,11 +27,15 @@ namespace TheLearningChannelCS.Handlers
             return userInput;
         }
 
-        public static bool GetUserTryAgainInput(string userInput)
+        public static bool GetUserTryAgainInput(string tryAgainText)
         {
-            string userInputToUpper = userInput.ToUpper();
+            Console.Write($"\n{tryAgainText} (Y/N): ");
 
-            return userInputToUpper == "S" || userInputToUpper == "SI" || userInputToUpper == "SIM";
+            string userInputToUpper = Console.ReadLine().ToUpper();
+
+            return userInputToUpper == "Y"  ||
+                   userInputToUpper == "YE" ||
+                   userInputToUpper == "YES";
         }
     }
 }

@@ -36,9 +36,12 @@ namespace TheLearningChannelCS.App
 
         static void Main(string[] args)
         {
-            string assignmentName = UIHandler.RenderMenu(MENU_TITLES, MENU_OPTIONS);
+            while (true)
+            {
+                string assignmentName = UIHandler.RenderMenu(MENU_TITLES, MENU_OPTIONS);
 
-            GetAssignment(assignmentName).ExecAssignment();
+                GetAssignment(assignmentName).ExecAssignment();
+            }
         }
     }
 }
