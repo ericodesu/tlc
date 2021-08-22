@@ -37,5 +37,13 @@ namespace TheLearningChannelCS.Handlers
                    userInputToUpper == "YE" ||
                    userInputToUpper == "YES";
         }
+
+        public static void FlushInputBuffer()
+        {
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(true);
+            }
+        }
     }
 }
