@@ -27,9 +27,9 @@ namespace TheLearningChannelCS.Questions.FifthAssignment
                     UserChoiceRestrainer
                 ));
 
-                double erorMaxValue = Math.Pow(10, (-errorExponentValue));
+                double errorMaxValue = Math.Pow(10, (-errorExponentValue));
 
-                Console.WriteLine($"You've choosen an error of < {erorMaxValue}");
+                Console.WriteLine($"You've choosen an error of < {errorMaxValue}");
 
                 bool willShowParcials = InputHandler.GetUserTryAgainInput("Do you want to see the parcial results ?");
 
@@ -37,11 +37,11 @@ namespace TheLearningChannelCS.Questions.FifthAssignment
 
                 int iterator = 1;
 
-                double currentErrorValue = Math.Abs(PI_BASE_NUMBER - currentPIValue);
+                double currentErrorValue = PI_BASE_NUMBER - currentPIValue;
 
                 Console.WriteLine("\tN\tPI value\tError");
 
-                while (currentErrorValue >= erorMaxValue)
+                while (Math.Abs(currentErrorValue) >= errorMaxValue)
                 {
                     double summationDividend = (Math.Pow(-1, (iterator + 1)) * 4);
                     int summationDivisor = ((2 * iterator) * ((2 * iterator) + 1) * ((2 * iterator) + 2));
@@ -52,7 +52,7 @@ namespace TheLearningChannelCS.Questions.FifthAssignment
 
                     currentPIValue += currentSummationInteration;
 
-                    currentErrorValue = Math.Abs(PI_BASE_NUMBER - currentPIValue);
+                    currentErrorValue = PI_BASE_NUMBER - currentPIValue;
 
                     iterator++;
                 }
