@@ -21,7 +21,7 @@ namespace TheLearningChannelCS.App
                     return new EigthAssignment();
 
                 case "p9":
-                    return new FifthAssignment();
+                    return new NinthAssignment();
 
                 case "p10":
                     return new FifthAssignment();
