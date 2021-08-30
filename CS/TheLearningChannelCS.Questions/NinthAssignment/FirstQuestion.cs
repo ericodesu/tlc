@@ -147,8 +147,6 @@ namespace TheLearningChannelCS.Questions.NinthAssignment
 
             RenderMatrix(matrixAddAndCut,  "\nAdd A And Cut B:");
             RenderMatrix(matrixAddAndKeep, "\nAdd A And Keep B:");
-
-            Console.ReadLine();
         }
     }
 }

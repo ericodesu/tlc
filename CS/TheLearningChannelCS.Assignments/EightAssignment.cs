@@ -28,7 +28,7 @@ namespace TheLearningChannelCS.Assignments
         {
             string questionName = UIHandler.RenderMenu(MENU_TITLES, AVAILABLE_QUESTIONS);
 
-            GetQuestion(questionName).ExecQuestion();
+            AssignmentHandler.HandleQuestionExecution(GetQuestion(questionName));
         }
     }
 }

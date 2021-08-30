@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TheLearningChannelCS.Handlers
+﻿namespace TheLearningChannelCS.Handlers
 {
     public class UIHandler
     {
+        public static void RenderExecutionFinalMessage()
+        {
+            Console.Write("\nPess any key to go back to the assignment menu: ");
+            Console.ReadKey();
+        }
+
         public static void RenderBoundaryBars(int barCount = 2)
         {
             string boudaryBars = new('=', barCount);

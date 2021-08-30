@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TheLearningChannelCS.Common.Interfaces;
+﻿using TheLearningChannelCS.Common.Interfaces;
 using TheLearningChannelCS.Handlers;
 using TheLearningChannelCS.Questions.NinthAssignment;
 
@@ -31,7 +30,7 @@ namespace TheLearningChannelCS.Assignments
         {
             string questionName = UIHandler.RenderMenu(MENU_TITLES, AVAILABLE_QUESTIONS);
 
-            GetQuestion(questionName).ExecQuestion();
+            AssignmentHandler.HandleQuestionExecution(GetQuestion(questionName));
         }
     }
 }

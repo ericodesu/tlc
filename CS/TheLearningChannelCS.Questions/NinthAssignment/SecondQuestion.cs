@@ -131,8 +131,6 @@ namespace TheLearningChannelCS.Questions.NinthAssignment
             int[,] matrixC = MultiplyMatrices(matrixA, matrixB);
 
             RenderMatrix(matrixC, "Matrix C:");
-
-            Console.ReadLine();
         }
     }
 }
