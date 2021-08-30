@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TheLearningChannelCS.Common\TheLearningChannelCS.Common.csproj" />
+    <ProjectReference Include="..\TheLearningChannelCS.Handlers\TheLearningChannelCS.Handlers.csproj" />
+    <ProjectReference Include="..\TheLearningChannelCS.Questions\TheLearningChannelCS.Questions.csproj" />
+  </ItemGroup>
+
+</Project>

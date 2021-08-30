@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\apps\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Kuopira\Desktop\Dev\Projects\CPP\TLC\CPP\apps\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7C0F377C-C3F8-3A77-82AE-5F0FC667B499}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
