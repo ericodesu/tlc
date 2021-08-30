@@ -10,4 +10,13 @@
     <ProjectReference Include="..\TheLearningChannelCS.Handlers\TheLearningChannelCS.Handlers.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\Images\TenthAssignment\Pedestrian.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Text\ThirtheenthAssignment\Covid19VicosaMG.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
