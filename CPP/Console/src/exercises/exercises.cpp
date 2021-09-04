@@ -10,7 +10,7 @@
 #include <functional>
 #include <vector>
 
-void exercises::RunFifthExercise(){
+void exercises::runFifthExercise(){
     FifthExercise *exercise = NULL;
 
     exercise = new FifthExercise();
@@ -18,42 +18,42 @@ void exercises::RunFifthExercise(){
     Question *q1 = NULL;
     Question *q2 = NULL;
 
-    q1 = new Question("q1", std::bind(&FifthExercise::ExecQ1, exercise));
-    q2 = new Question("q2", std::bind(&FifthExercise::ExecQ2, exercise));
+    q1 = new Question("q1", std::bind(&FifthExercise::execQ1, exercise));
+    q2 = new Question("q2", std::bind(&FifthExercise::execQ2, exercise));
     
     std::vector<Question> question_list = {
         *q1,
         *q2
     };
 
-    exercise->SetQuestionList(question_list);
+    exercise->setQuestionList(question_list);
 
-    Question currentQuestion = exercise->ExecQuestionsMenu(exercise->GetQuestionList());
+    Question current_question = exercise->execQuestionsMenu(exercise->getQuestionList());
 
-    exercise->RunQuestion(currentQuestion.GetExecQuestion());
+    exercise->runQuestion(current_question.getExecQuestion());
 };
 
-void exercises::RunEighthExercise(){
+void exercises::runEighthExercise(){
     EighthExercise *exercise = NULL;
 
     exercise = new EighthExercise();
 
     Question *q1 = NULL;
 
-    q1 = new Question("q1", std::bind(&EighthExercise::ExecQ1, exercise));
+    q1 = new Question("q1", std::bind(&EighthExercise::execQ1, exercise));
     
     std::vector<Question> question_list = {
         *q1
     };
 
-    exercise->SetQuestionList(question_list);
+    exercise->setQuestionList(question_list);
 
-    Question currentQuestion = exercise->ExecQuestionsMenu(exercise->GetQuestionList());
+    Question current_question = exercise->execQuestionsMenu(exercise->getQuestionList());
 
-    exercise->RunQuestion(currentQuestion.GetExecQuestion());
+    exercise->runQuestion(current_question.getExecQuestion());
 };
 
-void exercises::RunNinthExercise(){
+void exercises::runNinthExercise(){
     NinthExercise *exercise = NULL;
 
     exercise = new NinthExercise();
@@ -61,57 +61,57 @@ void exercises::RunNinthExercise(){
     Question *q1 = NULL;
     Question *q2 = NULL;
 
-    q1 = new Question("q1", std::bind(&NinthExercise::ExecQ1, exercise));
-    q2 = new Question("q2", std::bind(&NinthExercise::ExecQ2, exercise));
+    q1 = new Question("q1", std::bind(&NinthExercise::execQ1, exercise));
+    q2 = new Question("q2", std::bind(&NinthExercise::execQ2, exercise));
     
     std::vector<Question> question_list = {
         *q1,
         *q2
     };
 
-    exercise->SetQuestionList(question_list);
+    exercise->setQuestionList(question_list);
 
-    Question currentQuestion = exercise->ExecQuestionsMenu(exercise->GetQuestionList());
+    Question current_question = exercise->execQuestionsMenu(exercise->getQuestionList());
 
-    exercise->RunQuestion(currentQuestion.GetExecQuestion());
+    exercise->runQuestion(current_question.getExecQuestion());
 };
 
-void exercises::RunTenthExercise(){
+void exercises::runTenthExercise(){
     TenthExercise *exercise = NULL;
 
     exercise = new TenthExercise();
 
     Question *q1 = NULL;
 
-    q1 = new Question("q1", std::bind(&TenthExercise::ExecQ1, exercise));
+    q1 = new Question("q1", std::bind(&TenthExercise::execQ1, exercise));
     
     std::vector<Question> question_list = {
         *q1
     };
 
-    exercise->SetQuestionList(question_list);
+    exercise->setQuestionList(question_list);
 
-    Question currentQuestion = exercise->ExecQuestionsMenu(exercise->GetQuestionList());
+    Question current_question = exercise->execQuestionsMenu(exercise->getQuestionList());
 
-    exercise->RunQuestion(currentQuestion.GetExecQuestion());
+    exercise->runQuestion(current_question.getExecQuestion());
 };
 
-void exercises::RunThirteenthExercise(){
+void exercises::runThirteenthExercise(){
     ThirteenthExercise *exercise = NULL;
 
     exercise = new ThirteenthExercise();
 
     Question *q1 = NULL;
 
-    q1 = new Question("q1", std::bind(&ThirteenthExercise::ExecQ1, exercise));
+    q1 = new Question("q1", std::bind(&ThirteenthExercise::execQ1, exercise));
     
     std::vector<Question> question_list = {
         *q1
     };
 
-    exercise->SetQuestionList(question_list);
+    exercise->setQuestionList(question_list);
 
-    Question currentQuestion = exercise->ExecQuestionsMenu(exercise->GetQuestionList());
+    Question current_question = exercise->execQuestionsMenu(exercise->getQuestionList());
 
-    exercise->RunQuestion(currentQuestion.GetExecQuestion());
+    exercise->runQuestion(current_question.getExecQuestion());
 };

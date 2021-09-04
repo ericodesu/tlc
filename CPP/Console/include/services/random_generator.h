@@ -29,12 +29,12 @@ namespace randomgenerator {
     };
 
     template <class TDraw>
-    std::vector<TDraw> UnidimensionalVector(
+    std::vector<TDraw> unidimensionalVector(
         uint32_t draw_size,
         TDraw draw_floor = 1,
         TDraw draw_roof = 100
     ){
-        std::vector<TDraw> drawn_vector = vectorhandler::CreateUnidimensionalVector<TDraw>(draw_size);
+        std::vector<TDraw> drawn_vector = vectorhandler::createunidimensionalVector<TDraw>(draw_size);
         
         for(int currentDrawnVectorIndex = 0; currentDrawnVectorIndex < draw_size; currentDrawnVectorIndex++){
             drawn_vector[currentDrawnVectorIndex] = Number(draw_floor, draw_roof);
@@ -44,12 +44,12 @@ namespace randomgenerator {
     };
 
     template <class TDraw>
-    vectorhandler::multidimensional::Vector<TDraw> MultidimensionalVector(
+    vectorhandler::multidimensional::Vector<TDraw> multidimensionalVector(
         std::vector<uint32_t> draw_dimensions,
         TDraw draw_floor = 1,
         TDraw draw_roof = 100
     ){
-        vectorhandler::multidimensional::Vector<TDraw> drawn_vector = vectorhandler::CreateMultidimensionalVector<TDraw>(draw_dimensions);
+        vectorhandler::multidimensional::Vector<TDraw> drawn_vector = vectorhandler::createMultidimensionalVector<TDraw>(draw_dimensions);
         
         std::vector<uint32_t> indices(draw_dimensions.size(), 0);
 

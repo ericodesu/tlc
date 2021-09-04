@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main(void){
-    prompthandler::ShowMenu();
+    prompthandler::showMenu();
 
     return 0;
 }

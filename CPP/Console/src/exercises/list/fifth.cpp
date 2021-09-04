@@ -16,7 +16,7 @@
 #define ERROR_FLOOR 2
 #define ERROR_ROOF 20
 
-void FifthExercise::ExecQ1(){
+void FifthExercise::execQ1(){
     //Setting random number seed
     srand(0);
 
@@ -73,11 +73,11 @@ void FifthExercise::ExecQ1(){
             }
         }while(user_guess != drawn_number);
 
-        is_another_try = prompthandler::ShowTryAgain("Want another run?");
+        is_another_try = prompthandler::showTryAgain("Want another run?");
     }while(is_another_try == true);
 };
 
-void FifthExercise::ExecQ2(){
+void FifthExercise::execQ2(){
     bool is_another_try = true;
 
     std::cout << "Find the value of PI using the series of Nilakantha\nwith the minimal amount of error going between (10^-2 until 10^-20)\n";\
@@ -102,7 +102,7 @@ void FifthExercise::ExecQ2(){
 
         std::printf("You've choosen the error < %g", error);
 
-        has_partial_results = prompthandler::ShowTryAgain("Want to watch the parcial results?");
+        has_partial_results = prompthandler::showTryAgain("Want to watch the parcial results?");
 
         int current_iteration = 1;
 
@@ -140,6 +140,6 @@ void FifthExercise::ExecQ2(){
 
         std::printf(current_status_display.c_str(), current_iteration, current_PI, current_error);
 
-        is_another_try = prompthandler::ShowTryAgain("Want another run?");
+        is_another_try = prompthandler::showTryAgain("Want another run?");
     }while(is_another_try == true);
 };

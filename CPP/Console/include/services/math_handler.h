@@ -2,7 +2,7 @@
 #define TLC_CPP_INCLUDE_SERVICES_MATH_HANDLER_H
 
 namespace mathhandler {
-    int CountDigits(int number);
+    int countDigits(int number);
 };
 
 #endif

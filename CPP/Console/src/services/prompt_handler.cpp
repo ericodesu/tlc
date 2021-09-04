@@ -7,7 +7,7 @@
 #include <vector>
 #include <algorithm>
 
-bool prompthandler::ShowTryAgain(std::string try_again_message){
+bool prompthandler::showTryAgain(std::string try_again_message){
     std::cout << "\n" << try_again_message << " (Y/N): ";
 
     std::string user_try_choice;
@@ -24,7 +24,7 @@ bool prompthandler::ShowTryAgain(std::string try_again_message){
     return user_try_choice == "Y" || user_try_choice == "YES";
 };
 
-void prompthandler::ShowMenu(){
+void prompthandler::showMenu(){
     bool is_running = true;
 
     std::vector<std::string> MENU_AVAILABLE_CHOICES = {
@@ -39,15 +39,15 @@ void prompthandler::ShowMenu(){
         MAX_MENU_CHOICE = MENU_AVAILABLE_CHOICES.size();
 
     do{
-        ClearScreen();
+        clearScreen();
 
         int menu_choice = 0;
 
-        uihandler::ShowBarsLine(28);
+        uihandler::showBarsLine(28);
 
-        uihandler::ShowListing("   TLC\n    (The Learning Channel)", "Available Exercises", MENU_AVAILABLE_CHOICES);
+        uihandler::showListing("   TLC\n    (The Learning Channel)", "Available Exercises", MENU_AVAILABLE_CHOICES);
 
-        uihandler::ShowBarsLine(28);
+        uihandler::showBarsLine(28);
 
         while(menu_choice < MIN_MENU_CHOICE || menu_choice > MAX_MENU_CHOICE){
             std::cout << "\n\nInsert an exercise between [" << MIN_MENU_CHOICE << " - " << MAX_MENU_CHOICE << "]: " ;
@@ -58,31 +58,31 @@ void prompthandler::ShowMenu(){
             }
         }
 
-        ClearScreen();
+        clearScreen();
 
         switch (menu_choice){
             case 1:
-                exercises::RunFifthExercise();
+                exercises::runFifthExercise();
 
                 break;
             
             case 2:
-                exercises::RunEighthExercise();
+                exercises::runEighthExercise();
 
                 break;
 
             case 3:
-                exercises::RunNinthExercise();
+                exercises::runNinthExercise();
 
                 break;
             
             case 4:
-                exercises::RunTenthExercise();
+                exercises::runTenthExercise();
 
                 break;
 
             case 5:
-                exercises::RunThirteenthExercise();
+                exercises::runThirteenthExercise();
 
                 break;
 
@@ -92,13 +92,13 @@ void prompthandler::ShowMenu(){
                 break;
         }
 
-        is_running = prompthandler::ShowTryAgain("Do you want to run another question?");
+        is_running = prompthandler::showTryAgain("Do you want to run another question?");
 
-        ClearScreen();
+        clearScreen();
     }while(is_running == true);
 };
 
-void prompthandler::ClearScreen(){
+void prompthandler::clearScreen(){
     #ifdef _WINDOWS
         std::system("cls");
     #else

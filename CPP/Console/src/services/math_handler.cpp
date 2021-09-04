@@ -1,6 +1,6 @@
 #include <services/math_handler.h>
 
-int mathhandler::CountDigits(int number){
+int mathhandler::countDigits(int number){
     int count = 0;
 
     while (number != 0){

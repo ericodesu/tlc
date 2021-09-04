@@ -6,7 +6,7 @@
 
 class TenthExercise: public Exercise {
     public:
-        void ExecQ1();
+        void execQ1();
 };
 
 #endif
