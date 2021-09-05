@@ -5,8 +5,8 @@
 #include <vector>
 
 namespace uihandler {
-    void ShowBarsLine(int bars_quantity);
-    void ShowListing(
+    void showBarsLine(int bars_quantity);
+    void showListing(
         std::string primary_text,
         std::string secondary_text,
         std::vector<std::string> listing

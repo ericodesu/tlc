@@ -6,7 +6,7 @@
 #include <iostream>
 #include <string>
 
-void EighthExercise::ExecQ1(){
+void EighthExercise::execQ1(){
     constexpr int ASCII_UPPER_CODE_FLOOR = int('A'),
                   ASCII_LOWER_CODE_FLOOR = int('a'),
                   ASCII_LOWER_CODE_ROOF = int('z'),
@@ -53,6 +53,6 @@ void EighthExercise::ExecQ1(){
         std::wcout << "\nOriginal: " << user_phrase;
         std::wcout << "\nModified: " << modified_phrase;
 
-        is_another_try = prompthandler::ShowTryAgain("\nWant another try?");
+        is_another_try = prompthandler::showTryAgain("\nWant another try?");
     }while(is_another_try == true);
 };

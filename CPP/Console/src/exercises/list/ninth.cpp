@@ -20,7 +20,7 @@
 #define Q2_MATRIX_B_PRINT_SPACING 4
 #define Q2_MATRIX_C_PRINT_SPACING 6
 
-void NinthExercise::ExecQ1(){
+void NinthExercise::execQ1(){
     std::string matrix_dimension_constraints = "(" + std::to_string(Q1_MATRIX_FLOOR_DIMENSIONS) + "-" + std::to_string(Q1_MATRIX_ROOF_DIMENSIONS) + ")";
 
     std::function<bool (uint32_t)> conditional = [](uint32_t user_input) {
@@ -31,23 +31,23 @@ void NinthExercise::ExecQ1(){
         }
     };
 
-    uint32_t matrix_A_row = prompthandler::ShowQuestion<uint32_t>(
+    uint32_t matrix_A_row = prompthandler::showQuestion<uint32_t>(
         "Insert the amount of rows regarding A matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
     );
-    uint32_t matrix_A_column = prompthandler::ShowQuestion<uint32_t>(
+    uint32_t matrix_A_column = prompthandler::showQuestion<uint32_t>(
         "Insert the amount of columns regarding A matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
     );
 
-    uint32_t matrix_B_row = prompthandler::ShowQuestion<uint32_t>(
+    uint32_t matrix_B_row = prompthandler::showQuestion<uint32_t>(
         "Insert the amount of rows regarding B matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
     );
-    uint32_t matrix_B_column = prompthandler::ShowQuestion<uint32_t>(
+    uint32_t matrix_B_column = prompthandler::showQuestion<uint32_t>(
         "Insert the amount of columns regarding B matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
@@ -59,23 +59,23 @@ void NinthExercise::ExecQ1(){
                                                   matrix_B_column };
 
 
-    vectorhandler::multidimensional::Vector<int> matrix_A = randomgenerator::MultidimensionalVector<int>(
+    vectorhandler::multidimensional::Vector<int> matrix_A = randomgenerator::multidimensionalVector<int>(
         matrix_A_dimensions,
         Q1_MATRIX_DRAW_FLOOR,
         Q1_MATRIX_DRAW_ROOF
     );
-    vectorhandler::multidimensional::Vector<int> matrix_B = randomgenerator::MultidimensionalVector<int>(
+    vectorhandler::multidimensional::Vector<int> matrix_B = randomgenerator::multidimensionalVector<int>(
         matrix_B_dimensions,
         Q1_MATRIX_DRAW_FLOOR,
         Q1_MATRIX_DRAW_ROOF
     );
 
-    vectorhandler::ShowMultidimensionalVector(
+    vectorhandler::showMultidimensionalVector(
         matrix_A,
         matrix_A_dimensions,
         "Matrix A:\n"
     );
-    vectorhandler::ShowMultidimensionalVector(
+    vectorhandler::showMultidimensionalVector(
         matrix_B,
         matrix_B_dimensions,
         "\n\nMatrix B:\n"
@@ -134,12 +134,12 @@ void NinthExercise::ExecQ1(){
         }
     }
 
-    vectorhandler::ShowMultidimensionalVector(
+    vectorhandler::showMultidimensionalVector(
         matrix_add_and_cut,
         matrix_add_and_cut_dimensions,
         "\n\nA add and cut B:\n"
     );
-    vectorhandler::ShowMultidimensionalVector(
+    vectorhandler::showMultidimensionalVector(
         matrix_add_and_keep,
         matrix_add_and_keep_dimensions,
         "\n\nA add and keep B:\n"
@@ -148,7 +148,7 @@ void NinthExercise::ExecQ1(){
     std::cout << "\n";
 };
 
-void NinthExercise::ExecQ2(){
+void NinthExercise::execQ2(){
     std::string matrix_dimension_constraints = "(" + std::to_string(Q2_MATRIX_FLOOR_DIMENSIONS) + "-" + std::to_string(Q2_MATRIX_ROOF_DIMENSIONS) + ")";
 
     std::function<bool (uint32_t)> conditional = [](uint32_t user_input) {
@@ -159,12 +159,12 @@ void NinthExercise::ExecQ2(){
         }
     };
 
-    uint32_t matrix_A_row = prompthandler::ShowQuestion<uint32_t>(
+    uint32_t matrix_A_row = prompthandler::showQuestion<uint32_t>(
         "Insert the amount of rows regarding A matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
     );
-    uint32_t matrix_A_column = prompthandler::ShowQuestion<uint32_t>(
+    uint32_t matrix_A_column = prompthandler::showQuestion<uint32_t>(
         "Insert the amount of columns regarding A matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
@@ -173,7 +173,7 @@ void NinthExercise::ExecQ2(){
     std::cout << "The amount of rows regarding matrix B will be " << matrix_A_column << "\n";
 
     uint32_t matrix_B_row = matrix_A_column,
-             matrix_B_column = prompthandler::ShowQuestion<uint32_t>(
+             matrix_B_column = prompthandler::showQuestion<uint32_t>(
                 "Insert the amount of columns regarding B matrix " + matrix_dimension_constraints,
                 "Invalid Value!!!",
                 conditional
@@ -187,12 +187,12 @@ void NinthExercise::ExecQ2(){
                                                   matrix_A_column > matrix_B_column ?
                                                       matrix_A_column : matrix_B_column };
 
-    vectorhandler::multidimensional::Vector<int> matrix_A = randomgenerator::MultidimensionalVector(
+    vectorhandler::multidimensional::Vector<int> matrix_A = randomgenerator::multidimensionalVector(
         matrix_A_dimensions,
         Q2_MATRIX_DRAW_FLOOR,
         Q2_MATRIX_DRAW_ROOF
     );
-    vectorhandler::multidimensional::Vector<int> matrix_B = randomgenerator::MultidimensionalVector(
+    vectorhandler::multidimensional::Vector<int> matrix_B = randomgenerator::multidimensionalVector(
         matrix_B_dimensions,
         Q2_MATRIX_DRAW_FLOOR,
         Q2_MATRIX_DRAW_ROOF
@@ -224,19 +224,19 @@ void NinthExercise::ExecQ2(){
         }
     }
 
-    vectorhandler::ShowMultidimensionalVector(
+    vectorhandler::showMultidimensionalVector(
         matrix_A,
         matrix_A_dimensions,
         "\nMatrix A:\n",
         Q2_MATRIX_A_PRINT_SPACING
     );
-    vectorhandler::ShowMultidimensionalVector(
+    vectorhandler::showMultidimensionalVector(
         matrix_B,
         matrix_B_dimensions,
         "\n\nMatrix B:\n",
         Q2_MATRIX_B_PRINT_SPACING
     );
-    vectorhandler::ShowMultidimensionalVector(
+    vectorhandler::showMultidimensionalVector(
         matrix_C,
         matrix_C_dimensions,
         "\n\nMatrix C:\n",

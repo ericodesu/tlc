@@ -6,15 +6,15 @@
 #include <iostream>
 #include <vector>
 
-void Exercise::SetQuestionList(std::vector<Question> new_question_list){
+void Exercise::setQuestionList(std::vector<Question> new_question_list){
     Exercise::question_list = new_question_list;
 };
 
-std::vector<Question> Exercise::GetQuestionList(){
+std::vector<Question> Exercise::getQuestionList(){
     return Exercise::question_list;
 };
 
-Question Exercise::ExecQuestionsMenu(std::vector<Question> question_list){
+Question Exercise::execQuestionsMenu(std::vector<Question> question_list){
     int question_list_length = question_list.size();
 
     std::vector<std::string> listing;
@@ -23,17 +23,17 @@ Question Exercise::ExecQuestionsMenu(std::vector<Question> question_list){
 
     if(question_list_length > 0){
         for(int current_question_index = 0; current_question_index < question_list_length; current_question_index++){
-            listing.push_back(question_list[current_question_index].GetQuestionName());
+            listing.push_back(question_list[current_question_index].getQuestionName());
         }
     }else{
         listing.push_back("No questions found");
     }
 
-    uihandler::ShowBarsLine(28);
+    uihandler::showBarsLine(28);
 
-    uihandler::ShowListing("Exercise", "Available questions", listing);
+    uihandler::showListing("Exercise", "Available questions", listing);
 
-    uihandler::ShowBarsLine(28);
+    uihandler::showBarsLine(28);
 
     int menu_choice = 0;
 
@@ -49,8 +49,8 @@ Question Exercise::ExecQuestionsMenu(std::vector<Question> question_list){
     return question_list[menu_choice - 1];
 };
 
-void Exercise::RunQuestion(std::function<void()> RunnableQuestion){
-    prompthandler::ClearScreen();
+void Exercise::runQuestion(std::function<void()> runnableQuestion){
+    prompthandler::clearScreen();
     
-    RunnableQuestion();
+    runnableQuestion();
 };

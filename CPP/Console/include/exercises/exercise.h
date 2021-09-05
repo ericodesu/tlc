@@ -12,10 +12,10 @@ class Exercise: public IExercise {
        std::vector<Question> question_list;
 
     public:
-        void SetQuestionList(std::vector<Question> new_question_list);
-        std::vector<Question> GetQuestionList();
-        Question ExecQuestionsMenu(std::vector<Question> question_list);
-        void RunQuestion(std::function<void()> RunnableQuestion);
+        void setQuestionList(std::vector<Question> new_question_list);
+        std::vector<Question> getQuestionList();
+        Question execQuestionsMenu(std::vector<Question> question_list);
+        void runQuestion(std::function<void()> runnableQuestion);
 };
 
 #endif

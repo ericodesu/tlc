@@ -10,7 +10,7 @@
 #include <functional>
 #include <limits>
 
-void ShowSortedByMonthCodivData(std::vector<std::vector<int>> covid_data){
+void showSortedByMonthCodivData(std::vector<std::vector<int>> covid_data){
     int initial_recurrent_deceases = covid_data[0][4],
         initial_recurrent_case = covid_data[0][6];
 
@@ -55,7 +55,7 @@ void ShowSortedByMonthCodivData(std::vector<std::vector<int>> covid_data){
     }
 };
 
-std::vector<std::vector<int>> FilterCovidData(
+std::vector<std::vector<int>> filterCovidData(
             std::vector<std::vector<int>> covid_data,
             std::vector<int> data_floor_boundary = std::vector<int>(6, 0),
             std::vector<int> data_roof_boundary = std::vector<int>(6, std::numeric_limits<int>::max())
@@ -100,7 +100,7 @@ std::vector<std::vector<int>> FilterCovidData(
     return filtered_covid_data.size() > 0 ? filtered_covid_data : covid_data;
 };
 
-std::vector<int> GetCovidDataMinMax(
+std::vector<int> getCovidDataMinMax(
     std::vector<std::vector<int>> covid_data,
     int target_column = 0
 ){
@@ -125,14 +125,14 @@ std::vector<int> GetCovidDataMinMax(
     return min_max_list;
 };
 
-void ShowCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
+void showCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
     std::string try_again_message = "Do you want to verify the moving average of a given date";
 
-    bool will_be_another_run = prompthandler::ShowTryAgain(try_again_message);
+    bool will_be_another_run = prompthandler::showTryAgain(try_again_message);
 
     std::vector<int> first_entry = covid_data[0],
                      last_entry = covid_data[(covid_data.size() - 1)],
-                     year_min_max = GetCovidDataMinMax(covid_data, 2);
+                     year_min_max = getCovidDataMinMax(covid_data, 2);
 
     std::string year_constraints = " (" + std::to_string(year_min_max[0]) + "-" + std::to_string(year_min_max[1]) + ")";
 
@@ -145,7 +145,7 @@ void ShowCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
     };
 
     while(will_be_another_run){
-        int target_year = prompthandler::ShowQuestion<int>(
+        int target_year = prompthandler::showQuestion<int>(
             "Insert the target year" + year_constraints,
             "Invalid Value!!!",
             year_conditional
@@ -155,7 +155,7 @@ void ShowCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
 
         month_floor_boundaries[2] = target_year;
 
-        std::vector<int> month_min_max = GetCovidDataMinMax(FilterCovidData(covid_data, month_floor_boundaries), 1);
+        std::vector<int> month_min_max = getCovidDataMinMax(filterCovidData(covid_data, month_floor_boundaries), 1);
 
         std::string month_constraints = " (" + std::to_string(month_min_max[0]) + "-" + std::to_string(month_min_max[1]) + ")";
 
@@ -167,7 +167,7 @@ void ShowCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
             }
         };
 
-        int target_month = prompthandler::ShowQuestion<int>(
+        int target_month = prompthandler::showQuestion<int>(
             "Insert the target month" + month_constraints,
             "Invalid Value!!!", 
             month_conditional
@@ -178,7 +178,7 @@ void ShowCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
         day_floor_boundaries[1] = target_month;
         day_floor_boundaries[2] = target_year;
 
-        std::vector<int> day_min_max = GetCovidDataMinMax(FilterCovidData(covid_data, day_floor_boundaries), 0);
+        std::vector<int> day_min_max = getCovidDataMinMax(filterCovidData(covid_data, day_floor_boundaries), 0);
 
         std::string day_constraints = " (" + std::to_string(day_min_max[0]) + "-" + std::to_string(day_min_max[1]) + ")";
 
@@ -190,7 +190,7 @@ void ShowCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
             }
         };
 
-        int target_day = prompthandler::ShowQuestion<int>(
+        int target_day = prompthandler::showQuestion<int>(
             "Insert the target day" + day_constraints,
             "Invalid Value!!!", 
             day_conditional
@@ -207,7 +207,7 @@ void ShowCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
         date_roof_boundaries[1] = target_month;
         date_roof_boundaries[2] = target_year;
 
-        std::vector<std::vector<int>> user_selected_data = FilterCovidData(covid_data, date_floor_boundaries);
+        std::vector<std::vector<int>> user_selected_data = filterCovidData(covid_data, date_floor_boundaries);
 
         std::string current_date = std::to_string(target_day) + "/"  + std::to_string(target_month) + "/" + std::to_string(target_year);
 
@@ -218,11 +218,11 @@ void ShowCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
                   << "\n      and the moving average of the diceases was: "
                   << 0;
 
-        will_be_another_run = prompthandler::ShowTryAgain(try_again_message);
+        will_be_another_run = prompthandler::showTryAgain(try_again_message);
     };
 };
 
-void ThirteenthExercise::ExecQ1(){
+void ThirteenthExercise::execQ1(){
     std::string resource_path = RESOURCE_FILE_DIR,
                 cvs_file_path = resource_path + "/csv/Covid19VicosaMG.csv",
                 line;
@@ -247,7 +247,7 @@ void ThirteenthExercise::ExecQ1(){
         sorted_covid_data.push_back(column);
     }
 
-    ShowSortedByMonthCodivData(sorted_covid_data);
+    showSortedByMonthCodivData(sorted_covid_data);
 
-    ShowCovidDataMovingAVG(sorted_covid_data);
+    showCovidDataMovingAVG(sorted_covid_data);
 };

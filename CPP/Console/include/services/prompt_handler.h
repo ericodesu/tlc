@@ -6,11 +6,11 @@
 #include <iostream>
 
 namespace prompthandler {
-    bool ShowTryAgain(std::string try_again_message);
-    void ShowMenu();
-    void ClearScreen();
+    bool showTryAgain(std::string try_again_message);
+    void showMenu();
+    void clearScreen();
     template<class T>
-    T ShowQuestion(
+    T showQuestion(
         std::string question_message,
         std::string error_message,
         std::function<bool (T)> conditional

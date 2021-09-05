@@ -91,17 +91,17 @@ namespace vectorhandler {
     };
 
     template <class TVector>
-    multidimensional::Vector<TVector> CreateMultidimensionalVector(std::vector<uint32_t> vector_dimensions){
+    multidimensional::Vector<TVector> createMultidimensionalVector(std::vector<uint32_t> vector_dimensions){
         return multidimensional::Vector<TVector>(vector_dimensions);
     };
 
     template <class TVector>
-    std::vector<TVector> CreateUnidimensionalVector(uint32_t vector_size){
+    std::vector<TVector> createunidimensionalVector(uint32_t vector_size){
         return std::vector<TVector>(vector_size, 0);
     };
 
     template <class TVector>
-    void ShowMultidimensionalVector(
+    void showMultidimensionalVector(
         multidimensional::Vector<TVector> matrix,
         std::vector<uint32_t> matrix_dimensions,
         std::string matrix_title = "Matrix",

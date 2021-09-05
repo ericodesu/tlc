@@ -9,7 +9,7 @@ class EighthExercise: public Exercise {
         /**
          *    A few insights on why the result may differ and how to work around it:
          *
-         *    - The ExecQ1 function heavily depends on the terminal/CMD and how,
+         *    - The execQ1 function heavily depends on the terminal/CMD and how,
          *    is configured, this is given because of the 'chcp' and which
          *    is his value, this variable controls the Region of the input/output
          *    accepted by the terminal, they are (Windows based):
@@ -39,7 +39,7 @@ class EighthExercise: public Exercise {
          *    open your terminal/CMD and type 'chcp ${DESIRED_CODE_PAGE}' in this code
          *    snippet, the code '1252' was used in order to work propely.
          */
-        void ExecQ1();
+        void execQ1();
 };
 
 #endif
