@@ -1,6 +1,6 @@
 # About
 
-Project in order to train my C++ and C# skills
+Project in order to learn the basics from programming languages
 
 ## C++
 
@@ -33,3 +33,9 @@ There's a few things I'd like to point it out in order to run sucessfully in you
 ### Project requirements
 
    - Visual Studio Preview 2022 - [Windows](https://visualstudio.microsoft.com/vs/preview/vs2022/#download-preview)
+
+## Java
+
+### Project requirements
+
+   - A Java based IDE, I'd recommend using [Netbeans](https://www.oracle.com/technetwork/java/javase/downloads/jdk-netbeans-jsp-3413139-esa.html) since it's the one I'm using to develop it;
