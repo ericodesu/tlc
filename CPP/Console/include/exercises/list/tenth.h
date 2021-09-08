@@ -5,8 +5,8 @@
 #include <exercises/question.h>
 
 class TenthExercise: public Exercise {
-    public:
-        void execQ1();
+public:
+    void execQ1();
 };
 
 #endif

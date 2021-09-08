@@ -5,9 +5,9 @@
 #include <string>
 
 class IQuestion {
-    private:
-        virtual std::string getQuestionName() = 0;
-        virtual std::function<void()> getExecQuestion() = 0;
+private:
+    virtual std::string getQuestionName() = 0;
+    virtual std::function<void()> getExecQuestion() = 0;
 };
 
 #endif

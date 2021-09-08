@@ -7,14 +7,14 @@
 #include <string>
 
 class Question: public IQuestion {
-    private:
-        std::function<void()> questionExec;
-        std::string question_name;
+public:
+    Question(std::string initial_question_name, std::function<void()> initialQuestionExec);
+    std::function<void()> getExecQuestion();
+    std::string getQuestionName();
 
-    public:
-        Question(std::string initial_question_name, std::function<void()> initialQuestionExec);
-        std::function<void()> getExecQuestion();
-        std::string getQuestionName();
+private:
+    std::function<void()> questionExec;
+    std::string question_name;
 };
 
 #endif

@@ -20,8 +20,8 @@ std::vector<int> getCovidDataMinMax(
 void showCovidDataMovingAVG(std::vector<std::vector<int>> covid_data);
 
 class ThirteenthExercise: public Exercise {
-    public:
-        void execQ1();
+public:
+    void execQ1();
 };
 
 #endif
