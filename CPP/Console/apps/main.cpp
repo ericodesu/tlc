@@ -1,9 +1,7 @@
 #include <services/prompt_handler.h>
 
-#include <iostream>
-
 int main(void){
-    prompthandler::showMenu();
+    prompt_handler::showMenu();
 
     return 0;
 }

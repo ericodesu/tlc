@@ -11,10 +11,10 @@ void TenthExercise::execQ1(){
     std::string resource_path = RESOURCE_FILE_DIR;
     std::string image_path = resource_path + "/images/Pedestrian.png";
 
-    cv::Mat pedestrian_image = imagehandler::import(image_path);
+    cv::Mat pedestrian_image = image_handler::import(image_path);
 
     if(pedestrian_image.empty() == false){
-        imagehandler::display(pedestrian_image);
+        image_handler::display(pedestrian_image);
 
         for(int y = 0; y < pedestrian_image.rows; y++){
             for(int x = 0; x < pedestrian_image.cols; x++){
@@ -39,7 +39,7 @@ void TenthExercise::execQ1(){
             }
         }
 
-        imagehandler::display(pedestrian_image);
+        image_handler::display(pedestrian_image);
     }else{
         std::cout << "Could not read the image: " << image_path;
     }

@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <vector>
 
-namespace vectorhandler {
+namespace vector_handler {
     /**
      *    The multidimensional namespace code is originated from a stackoverflow post,
      *    a few usage directions must be pointed out, given:

@@ -29,11 +29,11 @@ Question Exercise::execQuestionsMenu(std::vector<Question> question_list){
         listing.push_back("No questions found");
     }
 
-    uihandler::showBarsLine(28);
+    ui_handler::showBarsLine(28);
 
-    uihandler::showListing("Exercise", "Available questions", listing);
+    ui_handler::showListing("Exercise", "Available questions", listing);
 
-    uihandler::showBarsLine(28);
+    ui_handler::showBarsLine(28);
 
     int menu_choice = 0;
 
@@ -50,7 +50,7 @@ Question Exercise::execQuestionsMenu(std::vector<Question> question_list){
 };
 
 void Exercise::runQuestion(std::function<void()> runnableQuestion){
-    prompthandler::clearScreen();
+    prompt_handler::clearScreen();
     
     runnableQuestion();
 };

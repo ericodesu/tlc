@@ -53,6 +53,6 @@ void EighthExercise::execQ1(){
         std::wcout << "\nOriginal: " << user_phrase;
         std::wcout << "\nModified: " << modified_phrase;
 
-        is_another_try = prompthandler::showTryAgain("\nWant another try?");
+        is_another_try = prompt_handler::showTryAgain("\nWant another try?");
     }while(is_another_try == true);
 };

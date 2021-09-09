@@ -73,7 +73,7 @@ void FifthExercise::execQ1(){
             }
         }while(user_guess != drawn_number);
 
-        is_another_try = prompthandler::showTryAgain("Want another run?");
+        is_another_try = prompt_handler::showTryAgain("Want another run?");
     }while(is_another_try == true);
 };
 
@@ -102,7 +102,7 @@ void FifthExercise::execQ2(){
 
         std::printf("You've choosen the error < %g", error);
 
-        has_partial_results = prompthandler::showTryAgain("Want to watch the parcial results?");
+        has_partial_results = prompt_handler::showTryAgain("Want to watch the parcial results?");
 
         int current_iteration = 1;
 
@@ -140,6 +140,6 @@ void FifthExercise::execQ2(){
 
         std::printf(current_status_display.c_str(), current_iteration, current_PI, current_error);
 
-        is_another_try = prompthandler::showTryAgain("Want another run?");
+        is_another_try = prompt_handler::showTryAgain("Want another run?");
     }while(is_another_try == true);
 };
