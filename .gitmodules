@@ -1,3 +1,3 @@
-[submodule "imgui"]
+[submodule "CPP/GUI/lib/imgui"]
 	path = CPP/GUI/lib/imgui
 	url = https://github.com/ocornut/imgui.git
