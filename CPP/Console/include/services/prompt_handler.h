@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 
-namespace prompthandler {
+namespace prompt_handler {
     bool showTryAgain(std::string try_again_message);
     void showMenu();
     void clearScreen();

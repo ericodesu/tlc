@@ -128,7 +128,7 @@ std::vector<int> getCovidDataMinMax(
 void showCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
     std::string try_again_message = "Do you want to verify the moving average of a given date";
 
-    bool will_be_another_run = prompthandler::showTryAgain(try_again_message);
+    bool will_be_another_run = prompt_handler::showTryAgain(try_again_message);
 
     std::vector<int> first_entry = covid_data[0],
                      last_entry = covid_data[(covid_data.size() - 1)],
@@ -145,7 +145,7 @@ void showCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
     };
 
     while(will_be_another_run){
-        int target_year = prompthandler::showQuestion<int>(
+        int target_year = prompt_handler::showQuestion<int>(
             "Insert the target year" + year_constraints,
             "Invalid Value!!!",
             year_conditional
@@ -167,7 +167,7 @@ void showCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
             }
         };
 
-        int target_month = prompthandler::showQuestion<int>(
+        int target_month = prompt_handler::showQuestion<int>(
             "Insert the target month" + month_constraints,
             "Invalid Value!!!", 
             month_conditional
@@ -190,7 +190,7 @@ void showCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
             }
         };
 
-        int target_day = prompthandler::showQuestion<int>(
+        int target_day = prompt_handler::showQuestion<int>(
             "Insert the target day" + day_constraints,
             "Invalid Value!!!", 
             day_conditional
@@ -218,7 +218,7 @@ void showCovidDataMovingAVG(std::vector<std::vector<int>> covid_data){
                   << "\n      and the moving average of the diceases was: "
                   << 0;
 
-        will_be_another_run = prompthandler::showTryAgain(try_again_message);
+        will_be_another_run = prompt_handler::showTryAgain(try_again_message);
     };
 };
 

@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-void uihandler::showBarsLine(int bars_quantity){
+void ui_handler::showBarsLine(int bars_quantity){
     std::string bars_line,
                 bar_caracter = "=";
 
@@ -15,7 +15,7 @@ void uihandler::showBarsLine(int bars_quantity){
     std::cout << bars_line;
 };
 
-void uihandler::showListing(
+void ui_handler::showListing(
     std::string primary_text,
     std::string secondary_text,
     std::vector<std::string> listing

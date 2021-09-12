@@ -5,9 +5,9 @@
 #include <exercises/question.h>
 
 class FifthExercise: public Exercise {
-    public:
-        void execQ1();
-        void execQ2();
+public:
+    void execQ1();
+    void execQ2();
 };
 
 #endif

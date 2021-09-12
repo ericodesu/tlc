@@ -8,14 +8,13 @@
 #include <vector>
 
 class Exercise: public IExercise {
-    private:
-       std::vector<Question> question_list;
-
-    public:
-        void setQuestionList(std::vector<Question> new_question_list);
-        std::vector<Question> getQuestionList();
-        Question execQuestionsMenu(std::vector<Question> question_list);
-        void runQuestion(std::function<void()> runnableQuestion);
+public:
+    void setQuestionList(std::vector<Question> new_question_list);
+    std::vector<Question> getQuestionList();
+    Question execQuestionsMenu(std::vector<Question> question_list);
+    void runQuestion(std::function<void()> runnableQuestion);
+private:
+	std::vector<Question> question_list;
 };
 
 #endif

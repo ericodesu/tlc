@@ -31,23 +31,23 @@ void NinthExercise::execQ1(){
         }
     };
 
-    uint32_t matrix_A_row = prompthandler::showQuestion<uint32_t>(
+    uint32_t matrix_A_row = prompt_handler::showQuestion<uint32_t>(
         "Insert the amount of rows regarding A matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
     );
-    uint32_t matrix_A_column = prompthandler::showQuestion<uint32_t>(
+    uint32_t matrix_A_column = prompt_handler::showQuestion<uint32_t>(
         "Insert the amount of columns regarding A matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
     );
 
-    uint32_t matrix_B_row = prompthandler::showQuestion<uint32_t>(
+    uint32_t matrix_B_row = prompt_handler::showQuestion<uint32_t>(
         "Insert the amount of rows regarding B matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
     );
-    uint32_t matrix_B_column = prompthandler::showQuestion<uint32_t>(
+    uint32_t matrix_B_column = prompt_handler::showQuestion<uint32_t>(
         "Insert the amount of columns regarding B matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
@@ -59,23 +59,23 @@ void NinthExercise::execQ1(){
                                                   matrix_B_column };
 
 
-    vectorhandler::multidimensional::Vector<int> matrix_A = randomgenerator::multidimensionalVector<int>(
+    vector_handler::multidimensional::Vector<int> matrix_A = random_generator::multidimensionalVector<int>(
         matrix_A_dimensions,
         Q1_MATRIX_DRAW_FLOOR,
         Q1_MATRIX_DRAW_ROOF
     );
-    vectorhandler::multidimensional::Vector<int> matrix_B = randomgenerator::multidimensionalVector<int>(
+    vector_handler::multidimensional::Vector<int> matrix_B = random_generator::multidimensionalVector<int>(
         matrix_B_dimensions,
         Q1_MATRIX_DRAW_FLOOR,
         Q1_MATRIX_DRAW_ROOF
     );
 
-    vectorhandler::showMultidimensionalVector(
+    vector_handler::showMultidimensionalVector(
         matrix_A,
         matrix_A_dimensions,
         "Matrix A:\n"
     );
-    vectorhandler::showMultidimensionalVector(
+    vector_handler::showMultidimensionalVector(
         matrix_B,
         matrix_B_dimensions,
         "\n\nMatrix B:\n"
@@ -97,12 +97,12 @@ void NinthExercise::execQ1(){
                           indice_matrix_add_and_cut(matrix_add_and_cut_dimensions.size(), 0),
                           indice_matrix_add_and_keep(matrix_add_and_keep_dimensions.size(), 0);
 
-    vectorhandler::multidimensional::Vector<int> matrix_add_and_cut(matrix_add_and_cut_dimensions),
+    vector_handler::multidimensional::Vector<int> matrix_add_and_cut(matrix_add_and_cut_dimensions),
                                                  matrix_add_and_keep(matrix_add_and_keep_dimensions);
 
     do{
         matrix_add_and_cut[indice_matrix_add_and_cut] = matrix_A[indice_matrix_add_and_cut] + matrix_B[indice_matrix_add_and_cut];
-    }while(vectorhandler::multidimensional::inc(indice_matrix_add_and_cut, matrix_add_and_cut_dimensions) == false);
+    }while(vector_handler::multidimensional::inc(indice_matrix_add_and_cut, matrix_add_and_cut_dimensions) == false);
 
     for(
         int current_matrix_index_1 = 0;
@@ -134,12 +134,12 @@ void NinthExercise::execQ1(){
         }
     }
 
-    vectorhandler::showMultidimensionalVector(
+    vector_handler::showMultidimensionalVector(
         matrix_add_and_cut,
         matrix_add_and_cut_dimensions,
         "\n\nA add and cut B:\n"
     );
-    vectorhandler::showMultidimensionalVector(
+    vector_handler::showMultidimensionalVector(
         matrix_add_and_keep,
         matrix_add_and_keep_dimensions,
         "\n\nA add and keep B:\n"
@@ -159,12 +159,12 @@ void NinthExercise::execQ2(){
         }
     };
 
-    uint32_t matrix_A_row = prompthandler::showQuestion<uint32_t>(
+    uint32_t matrix_A_row = prompt_handler::showQuestion<uint32_t>(
         "Insert the amount of rows regarding A matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
     );
-    uint32_t matrix_A_column = prompthandler::showQuestion<uint32_t>(
+    uint32_t matrix_A_column = prompt_handler::showQuestion<uint32_t>(
         "Insert the amount of columns regarding A matrix " + matrix_dimension_constraints,
         "Invalid Value!!!",
         conditional
@@ -173,7 +173,7 @@ void NinthExercise::execQ2(){
     std::cout << "The amount of rows regarding matrix B will be " << matrix_A_column << "\n";
 
     uint32_t matrix_B_row = matrix_A_column,
-             matrix_B_column = prompthandler::showQuestion<uint32_t>(
+             matrix_B_column = prompt_handler::showQuestion<uint32_t>(
                 "Insert the amount of columns regarding B matrix " + matrix_dimension_constraints,
                 "Invalid Value!!!",
                 conditional
@@ -187,17 +187,17 @@ void NinthExercise::execQ2(){
                                                   matrix_A_column > matrix_B_column ?
                                                       matrix_A_column : matrix_B_column };
 
-    vectorhandler::multidimensional::Vector<int> matrix_A = randomgenerator::multidimensionalVector(
+    vector_handler::multidimensional::Vector<int> matrix_A = random_generator::multidimensionalVector(
         matrix_A_dimensions,
         Q2_MATRIX_DRAW_FLOOR,
         Q2_MATRIX_DRAW_ROOF
     );
-    vectorhandler::multidimensional::Vector<int> matrix_B = randomgenerator::multidimensionalVector(
+    vector_handler::multidimensional::Vector<int> matrix_B = random_generator::multidimensionalVector(
         matrix_B_dimensions,
         Q2_MATRIX_DRAW_FLOOR,
         Q2_MATRIX_DRAW_ROOF
     );
-    vectorhandler::multidimensional::Vector<int> matrix_C(matrix_C_dimensions);
+    vector_handler::multidimensional::Vector<int> matrix_C(matrix_C_dimensions);
 
     std::vector<uint32_t> indices_matrix_C(matrix_C_dimensions.size(), 0),
                           indices_matrix_A(matrix_C_dimensions.size(), 0),
@@ -224,19 +224,19 @@ void NinthExercise::execQ2(){
         }
     }
 
-    vectorhandler::showMultidimensionalVector(
+    vector_handler::showMultidimensionalVector(
         matrix_A,
         matrix_A_dimensions,
         "\nMatrix A:\n",
         Q2_MATRIX_A_PRINT_SPACING
     );
-    vectorhandler::showMultidimensionalVector(
+    vector_handler::showMultidimensionalVector(
         matrix_B,
         matrix_B_dimensions,
         "\n\nMatrix B:\n",
         Q2_MATRIX_B_PRINT_SPACING
     );
-    vectorhandler::showMultidimensionalVector(
+    vector_handler::showMultidimensionalVector(
         matrix_C,
         matrix_C_dimensions,
         "\n\nMatrix C:\n",

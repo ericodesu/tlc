@@ -5,7 +5,7 @@
 
 #include<string>
 
-namespace imagehandler {
+namespace image_handler {
     cv::Mat import(std::string path);
     void display(cv::Mat image);
 };

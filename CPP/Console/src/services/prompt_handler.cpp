@@ -7,7 +7,7 @@
 #include <vector>
 #include <algorithm>
 
-bool prompthandler::showTryAgain(std::string try_again_message){
+bool prompt_handler::showTryAgain(std::string try_again_message){
     std::cout << "\n" << try_again_message << " (Y/N): ";
 
     std::string user_try_choice;
@@ -24,7 +24,7 @@ bool prompthandler::showTryAgain(std::string try_again_message){
     return user_try_choice == "Y" || user_try_choice == "YES";
 };
 
-void prompthandler::showMenu(){
+void prompt_handler::showMenu(){
     bool is_running = true;
 
     std::vector<std::string> MENU_AVAILABLE_CHOICES = {
@@ -43,11 +43,11 @@ void prompthandler::showMenu(){
 
         int menu_choice = 0;
 
-        uihandler::showBarsLine(28);
+        ui_handler::showBarsLine(28);
 
-        uihandler::showListing("   TLC\n    (The Learning Channel)", "Available Exercises", MENU_AVAILABLE_CHOICES);
+        ui_handler::showListing("   TLC\n    (The Learning Channel)", "Available Exercises", MENU_AVAILABLE_CHOICES);
 
-        uihandler::showBarsLine(28);
+        ui_handler::showBarsLine(28);
 
         while(menu_choice < MIN_MENU_CHOICE || menu_choice > MAX_MENU_CHOICE){
             std::cout << "\n\nInsert an exercise between [" << MIN_MENU_CHOICE << " - " << MAX_MENU_CHOICE << "]: " ;
@@ -92,13 +92,13 @@ void prompthandler::showMenu(){
                 break;
         }
 
-        is_running = prompthandler::showTryAgain("Do you want to run another question?");
+        is_running = prompt_handler::showTryAgain("Do you want to run another question?");
 
         clearScreen();
     }while(is_running == true);
 };
 
-void prompthandler::clearScreen(){
+void prompt_handler::clearScreen(){
     #ifdef _WINDOWS
         std::system("cls");
     #else

@@ -7,7 +7,7 @@
 #include <vector>
 #include <random>
 
-namespace randomgenerator {
+namespace random_generator {
     template<class T>
     using UniformDistribution =  typename std::conditional<
         std::is_floating_point<T>::value,
@@ -34,7 +34,7 @@ namespace randomgenerator {
         TDraw draw_floor = 1,
         TDraw draw_roof = 100
     ){
-        std::vector<TDraw> drawn_vector = vectorhandler::createunidimensionalVector<TDraw>(draw_size);
+        std::vector<TDraw> drawn_vector = vector_handler::createunidimensionalVector<TDraw>(draw_size);
         
         for(int currentDrawnVectorIndex = 0; currentDrawnVectorIndex < draw_size; currentDrawnVectorIndex++){
             drawn_vector[currentDrawnVectorIndex] = Number(draw_floor, draw_roof);
@@ -44,18 +44,18 @@ namespace randomgenerator {
     };
 
     template <class TDraw>
-    vectorhandler::multidimensional::Vector<TDraw> multidimensionalVector(
+    vector_handler::multidimensional::Vector<TDraw> multidimensionalVector(
         std::vector<uint32_t> draw_dimensions,
         TDraw draw_floor = 1,
         TDraw draw_roof = 100
     ){
-        vectorhandler::multidimensional::Vector<TDraw> drawn_vector = vectorhandler::createMultidimensionalVector<TDraw>(draw_dimensions);
+        vector_handler::multidimensional::Vector<TDraw> drawn_vector = vector_handler::createMultidimensionalVector<TDraw>(draw_dimensions);
         
         std::vector<uint32_t> indices(draw_dimensions.size(), 0);
 
         do{
             drawn_vector[indices] = Number(draw_floor, draw_roof);
-        }while(vectorhandler::multidimensional::inc(indices, draw_dimensions) == false);
+        }while(vector_handler::multidimensional::inc(indices, draw_dimensions) == false);
 
         return drawn_vector;
     };

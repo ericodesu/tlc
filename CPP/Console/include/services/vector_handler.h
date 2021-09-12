@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <vector>
 
-namespace vectorhandler {
+namespace vector_handler {
     /**
      *    The multidimensional namespace code is originated from a stackoverflow post,
      *    a few usage directions must be pointed out, given:
@@ -31,50 +31,50 @@ namespace vectorhandler {
     namespace multidimensional{
         template <typename T>
         class Vector {
-            private:
-                std::vector<uint32_t> _dims;
-                std::vector<T> _data;
+        public:
+            Vector(const std::vector<uint32_t> &dims): _dims(dims){
+                uint32_t size = _dims.empty() ? 0 : 1;
 
-            public:
-                Vector(const std::vector<uint32_t> &dims): _dims(dims){
-                    uint32_t size = _dims.empty() ? 0 : 1;
+                for (uint32_t dim : _dims) size *= dim;
+                    _data.resize(size);
+            }
 
-                    for (uint32_t dim : _dims) size *= dim;
-                        _data.resize(size);
+            Vector(
+                const std::vector<uint32_t> &dims,
+                const std::vector<T> &data
+            ): Vector<T>(dims){
+                assert(_data.size() == data.size());
+
+                std::copy(data.begin(), data.end(), _data.begin());
+            }
+
+            T& operator[](const std::vector<uint32_t> &indices){
+                uint32_t i = 0,
+                       j = 0;
+
+                for(uint32_t n = _dims.size(); j < n; ++j){
+                    i *= _dims[j];
+                    i += indices[j];
                 }
 
-                Vector(
-                    const std::vector<uint32_t> &dims,
-                    const std::vector<T> &data
-                ): Vector<T>(dims){
-                    assert(_data.size() == data.size());
+                return _data[i];
+            }
 
-                    std::copy(data.begin(), data.end(), _data.begin());
+            const T& operator[](const std::vector<uint32_t> &indices) const{
+                uint32_t i = 0,
+                       j = 0;
+
+                for (uint32_t n = _dims.size(); j < n; ++j){
+                    i *= _dims[j];
+                    i += indices[j];
                 }
 
-                T& operator[](const std::vector<uint32_t> &indices){
-                    uint32_t i = 0,
-                           j = 0;
+                return _data[i];
+            }
 
-                    for(uint32_t n = _dims.size(); j < n; ++j){
-                        i *= _dims[j];
-                        i += indices[j];
-                    }
-
-                    return _data[i];
-                }
-
-                const T& operator[](const std::vector<uint32_t> &indices) const{
-                    uint32_t i = 0,
-                           j = 0;
-
-                    for (uint32_t n = _dims.size(); j < n; ++j){
-                        i *= _dims[j];
-                        i += indices[j];
-                    }
-
-                    return _data[i];
-                }
+		private:
+            std::vector<uint32_t> _dims;
+            std::vector<T> _data;
         };
 
         bool inc(std::vector<uint32_t> &indices, const std::vector<uint32_t> &dims){

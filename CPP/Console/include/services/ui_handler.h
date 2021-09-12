@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace uihandler {
+namespace ui_handler {
     void showBarsLine(int bars_quantity);
     void showListing(
         std::string primary_text,
