@@ -1,6 +1,5 @@
 set(LIB_DIR "${PROJECT_SOURCE_DIR}/lib")
 
-
 #### START OPENGL ####
 
 find_package(OpenGL REQUIRED)
@@ -27,14 +26,15 @@ file(GLOB IMGUI_HEADER_FILES "${IMGUI_DIR}/*.h")
 file(GLOB IMGUI_SOURCE_FILES "${IMGUI_DIR}/*.cpp")
 
 add_library(imgui ${IMGUI_HEADER_FILES}
-								   ${IMGUI_SOURCE_FILES}
-								   "${IMGUI_DIR}/backends/imgui_impl_glfw.h"
-								   "${IMGUI_DIR}/backends/imgui_impl_glfw.cpp"
-								   "${IMGUI_DIR}/backends/imgui_impl_opengl3.h"
-								   "${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp"
+                                   ${IMGUI_SOURCE_FILES}
+                                   "${IMGUI_DIR}/backends/imgui_impl_glfw.h"
+                                   "${IMGUI_DIR}/backends/imgui_impl_glfw.cpp"
+                                   "${IMGUI_DIR}/backends/imgui_impl_opengl2.h"
+                                   "${IMGUI_DIR}/backends/imgui_impl_opengl2.cpp"
 )
 
 target_include_directories(imgui PUBLIC "${IMGUI_DIR}")
+target_include_directories(imgui PUBLIC "${IMGUI_DIR}/backends")
 
 target_link_libraries(imgui glfw)
 
