@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "InfinitySphereSelectedAxisVector.h"
+#include "InfinitySphereDimensionsVector.h"
 #include "InfinitySphere.generated.h"
 
 UCLASS()
@@ -24,32 +26,24 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* StaticMeshComponent;
+	UStaticMeshComponent* MainStaticMeshComponent;
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* TrailStaticMeshComponent;
 	UPROPERTY(
 		EditInstanceOnly,
-		Category = "Shphere Status",
-		meta = (
-			DisplayName = "Dimensions",
-			ClampMin = "0.0",
-			UIMin = "0.0"
-		)
+		Category = "Rotation Properties",
+		meta = (DisplayName = "Dimensions")
 	)
-	FVector RotationDimensions;
+	FInfinitySphereDimensionsVector RotationDimensions;
 	UPROPERTY(
 		EditInstanceOnly,
-		Category = "Shphere Status",
-		meta = (
-			DisplayName = "Rotarion Axis",
-			ClampMin = "0.0",
-			UIMin = "0.0",
-			ClampMax = "1.0",
-			UIMax = "1.0"
-		)
+		Category = "Rotation Properties",
+		meta = (DisplayName = "Axis")
 	)
-	FVector RotationAxis;
+	FInfinitySphereSelectedAxisVector RotationAxis;
 	UPROPERTY(
 		EditInstanceOnly,
-		Category = "Shphere Status",
+		Category = "Rotation Properties",
 		meta = (
 			DisplayName = "Speed",
 			ClampMin = "0.0",
@@ -57,5 +51,11 @@ public:
 		)
 	)
 	float RotationSpeed;
+	UPROPERTY(
+		EditInstanceOnly,
+		Category = "Rotation Properties",
+		meta = (DisplayName = "Angle")
+	)
 	float RotationAngle;
+	float RotationCurrentAngle;
 };
