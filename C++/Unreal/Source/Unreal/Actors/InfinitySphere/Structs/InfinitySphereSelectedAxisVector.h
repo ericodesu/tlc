@@ -10,14 +10,14 @@ struct FInfinitySphereSelectedAxisVector
 
 public:
     /** Vector's X activation status. */
-    UPROPERTY(EditInstanceOnly)
-    bool X;
+    UPROPERTY(EditInstanceOnly, meta = (DisplayName = "X"))
+    bool bIsXSelected;
     /** Vector's Y activation status. */
-    UPROPERTY(EditInstanceOnly)
-    bool Y;
+    UPROPERTY(EditInstanceOnly, meta = (DisplayName = "Y"))
+    bool bIsYSelected;
     /** Vector's Z activation status. */
-    UPROPERTY(EditInstanceOnly)
-    bool Z;
+    UPROPERTY(EditInstanceOnly, meta = (DisplayName = "Z"))
+    bool bIsZSelected;
 
     FORCEINLINE FInfinitySphereSelectedAxisVector();
 
@@ -26,7 +26,11 @@ public:
      * @param InY Y initial activation status.
      * @param InZ Z initial activation status.
      */
-    FORCEINLINE FInfinitySphereSelectedAxisVector(bool InX, bool InY, bool InZ);
+    FORCEINLINE FInfinitySphereSelectedAxisVector(
+        bool bInIsXSelected,
+        bool bInIsYSelected,
+        bool bInIsZSelected
+    );
 
     /**
      * @returns FVector.
@@ -37,15 +41,19 @@ public:
 inline FVector FInfinitySphereSelectedAxisVector::ConvertToFVector()
 {
     return *(new FVector(
-        (float)this->X,
-        (float)this->Y,
-        (float)this->Z
+        (float)this->bIsXSelected,
+        (float)this->bIsYSelected,
+        (float)this->bIsZSelected
     ));
 }
 
 FORCEINLINE FInfinitySphereSelectedAxisVector::FInfinitySphereSelectedAxisVector()
 {}
 
-FORCEINLINE FInfinitySphereSelectedAxisVector::FInfinitySphereSelectedAxisVector(bool InX, bool InY, bool InZ)
-    : X(InX), Y(InY), Z(InZ)
+FORCEINLINE FInfinitySphereSelectedAxisVector::FInfinitySphereSelectedAxisVector(
+    bool bInIsXSelected,
+    bool bInIsYSelected,
+    bool bInIsZSelected
+)
+    : bIsXSelected(bInIsXSelected), bIsYSelected(bInIsYSelected), bIsZSelected(bInIsZSelected)
 {}

@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "InfinitySphereSelectedAxisVector.h"
-#include "InfinitySphereDimensionsVector.h"
+
+#include "Structs/InfinitySphereSelectedAxisVector.h"
+#include "Structs/InfinitySphereDimensionsVector.h"
+
 #include "InfinitySphere.generated.h"
 
 UCLASS()
@@ -27,8 +29,6 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* MainStaticMeshComponent;
-	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* TrailStaticMeshComponent;
 	UPROPERTY(
 		EditInstanceOnly,
 		Category = "Rotation Properties",

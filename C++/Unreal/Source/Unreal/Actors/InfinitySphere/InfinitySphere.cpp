@@ -12,9 +12,6 @@ AInfinitySphere::AInfinitySphere()
 	MainStaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MainStaticMeshComponent"));
 	RootComponent = MainStaticMeshComponent;
 
-	TrailStaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TrailStaticMeshComponent"));
-	TrailStaticMeshComponent->SetupAttachment(RootComponent);
-
 	RotationDimensions = *(new FInfinitySphereDimensionsVector(0.0f, 0.0f));
 	RotationAxis = *(new FInfinitySphereSelectedAxisVector(false, false, false));
 	RotationSpeed = 0.0f;
@@ -54,7 +51,12 @@ void AInfinitySphere::Tick(float DeltaTime)
 	}
 
 	FVector NewLocation = GetActorLocation();
-	FVector RotationValue = RotationDimensions.ConvertToFVector().RotateAngleAxis(RotationCurrentAngle, RotationAxis.ConvertToFVector());
+	FVector RotationValue = RotationDimensions
+		.ConvertToFVector()
+		.RotateAngleAxis(
+			RotationCurrentAngle,
+			RotationAxis.ConvertToFVector()
+		);
 
 	NewLocation.X = RotationValue.X;
 	NewLocation.Y = RotationValue.Y;
