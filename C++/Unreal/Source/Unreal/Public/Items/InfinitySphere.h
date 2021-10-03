@@ -2,12 +2,10 @@
 
 #pragma once
 
+#include "Unreal/Types.h"
+
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-
-#include "Structs/InfinitySphereSelectedAxisVector.h"
-#include "Structs/InfinitySphereDimensionsVector.h"
-
 #include "InfinitySphere.generated.h"
 
 UCLASS()
@@ -16,15 +14,12 @@ class UNREAL_API AInfinitySphere : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AInfinitySphere();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(VisibleAnywhere)
