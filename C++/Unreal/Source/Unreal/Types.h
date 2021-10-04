@@ -3,6 +3,20 @@
 #include "CoreMinimal.h"
 #include "Types.generated.h"
 
+UENUM()
+enum FontLocales
+{
+    EN_US UMETA(DisplayName = "EN-US"),
+    JP UMETA(DisplayName = "JP")
+};
+
+UENUM()
+enum FontExtensions
+{
+    TTF UMETA(DisplayName = "ttf"),
+    OTF UMETA(DisplayName = "otf")
+};
+
 USTRUCT()
 struct FInfinitySphereSelectedAxisVector
 {
