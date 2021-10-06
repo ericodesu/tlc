@@ -4,6 +4,7 @@
 
 #include "Unreal/Classes/PlayerStatus.h"
 #include "Unreal/Classes/InternalFont.h"
+#include "Unreal/Classes/PlayerStatus.h"
 
 #include "SlateBasics.h"
 #include "SlateExtras.h"
@@ -26,6 +27,8 @@ private:
 	TWeakObjectPtr<class APlayerHUD> WidgetOwner;
 	TSharedPtr<SVerticalBox> WrapperBox;
 	TSharedPtr<SHorizontalBox> FooterBox;
+	FPlayerGraphicalStatus PlayerHealthBar;
+	FPlayerTextStatus PlayerManaBar;
 
 	void AttachEssentialStatus();
 	void AttachHealthStatusBar();

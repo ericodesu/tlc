@@ -7,14 +7,71 @@
 #include "PlayerStatus.generated.h"
 
 USTRUCT()
+struct FStyles
+{
+    GENERATED_BODY()
+
+public:
+    FORCEINLINE FStyles();
+
+    FORCEINLINE FStyles(FLinearColor InBackgroundColor, FLinearColor InBorderColor);
+
+    FORCEINLINE FStyles(FLinearColor InTextColor);
+
+    FORCEINLINE FStyles(
+        FLinearColor InBackgroundColor,
+        FLinearColor InBorderColor,
+        FLinearColor InTextColor
+    );
+
+    FLinearColor BackgroundColor;
+
+    FLinearColor BorderColor;
+
+    FLinearColor TextColor;
+};
+
+FORCEINLINE FStyles::FStyles()
+{}
+
+FORCEINLINE FStyles::FStyles(FLinearColor InBackgroundColor, FLinearColor InBorderColor)
+    : BackgroundColor(InBackgroundColor), BorderColor(InBorderColor)
+{}
+
+FORCEINLINE FStyles::FStyles(FLinearColor InTextColor)
+    : TextColor(InTextColor)
+{}
+
+FORCEINLINE FStyles::FStyles(
+    FLinearColor InBackgroundColor,
+    FLinearColor InBorderColor,
+    FLinearColor InTextColor
+)
+    : BackgroundColor(InBackgroundColor),
+      BorderColor(InBorderColor),
+      TextColor(InTextColor)
+{}
+
+USTRUCT()
 struct FDimensions2D
 {
     GENERATED_BODY()
 
 public:
-    uint32 Width;
-    uint32 Height;
+    FORCEINLINE FDimensions2D();
+
+    FORCEINLINE FDimensions2D(float InWidth, float InHeight);
+
+    float Width;
+    float Height;
 };
+
+FORCEINLINE FDimensions2D::FDimensions2D()
+{}
+
+FORCEINLINE FDimensions2D::FDimensions2D(float InWidth, float InHeight)
+    : Width(InWidth), Height(InHeight)
+{}
 
 USTRUCT()
 struct FTextConfiguration
@@ -24,18 +81,30 @@ struct FTextConfiguration
 public:
     FORCEINLINE FTextConfiguration();
 
-    FORCEINLINE FTextConfiguration(FDimensions2D InDimensions, FSlateFontInfo InFont);
-
-    FDimensions2D Dimensions;
+    FORCEINLINE FTextConfiguration(
+        FSlateFontInfo InFont,
+        FStyles InStyles,
+        FDimensions2D InDimensions
+    );
 
     FSlateFontInfo Font;
+
+    FStyles Styles;
+
+    FDimensions2D Dimensions;
 };
 
 FORCEINLINE FTextConfiguration::FTextConfiguration()
 {}
 
-FORCEINLINE FTextConfiguration::FTextConfiguration(FDimensions2D InDimensions, FSlateFontInfo InFont)
-    : Dimensions(InDimensions), Font(InFont)
+FORCEINLINE FTextConfiguration::FTextConfiguration(
+    FSlateFontInfo InFont,
+    FStyles InStyles,
+    FDimensions2D InDimensions
+)
+    : Font(InFont),
+      Styles(InStyles),
+      Dimensions(InDimensions)
 {}
 
 USTRUCT()
@@ -46,9 +115,12 @@ struct FGraphicalConfiguration
 public:
     FORCEINLINE FGraphicalConfiguration();
 
-    FORCEINLINE FGraphicalConfiguration(FSlateColor InBackgroundColor, FDimensions2D InDimensions);
+    FORCEINLINE FGraphicalConfiguration(
+        FStyles InStyles,
+        FDimensions2D InDimensions
+    );
 
-    FSlateColor BackgroundColor;
+    FStyles Styles;
 
     FDimensions2D Dimensions;
 };
@@ -56,8 +128,12 @@ public:
 FORCEINLINE FGraphicalConfiguration::FGraphicalConfiguration()
 {}
 
-FORCEINLINE FGraphicalConfiguration::FGraphicalConfiguration(FSlateColor InBackgroundColor, FDimensions2D InDimensions)
-    : BackgroundColor(InBackgroundColor), Dimensions(InDimensions)
+FORCEINLINE FGraphicalConfiguration::FGraphicalConfiguration(
+    FStyles InStyles,
+    FDimensions2D InDimensions
+)
+    : Styles(InStyles),
+      Dimensions(InDimensions)
 {}
 
 USTRUCT()
@@ -68,18 +144,18 @@ struct FPlayerTextStatus
 public:
     FORCEINLINE FPlayerTextStatus();
 
-    FORCEINLINE FPlayerTextStatus(FString InContent, FTextConfiguration InConfiguration);
-
-    FString Content;
+    FORCEINLINE FPlayerTextStatus(FTextConfiguration InConfiguration, FString InContent);
 
     FTextConfiguration Configuration;
+
+    FString Content;
 };
 
 FORCEINLINE FPlayerTextStatus::FPlayerTextStatus()
 {}
 
-FORCEINLINE FPlayerTextStatus::FPlayerTextStatus(FString InContent, FTextConfiguration InConfiguration)
-    : Content(InContent), Configuration(InConfiguration)
+FORCEINLINE FPlayerTextStatus::FPlayerTextStatus(FTextConfiguration InConfiguration, FString InContent)
+    : Configuration(InConfiguration), Content(InContent)
 {}
 
 USTRUCT()
@@ -92,7 +168,14 @@ public:
 
     FORCEINLINE FPlayerGraphicalStatus(FGraphicalConfiguration InConfiguration);
 
+    FORCEINLINE FPlayerGraphicalStatus(
+        FGraphicalConfiguration InConfiguration,
+        float InPercentage
+    );
+
     FGraphicalConfiguration Configuration;
+
+    float Percentage;
 };
 
 FORCEINLINE FPlayerGraphicalStatus::FPlayerGraphicalStatus()
@@ -100,4 +183,11 @@ FORCEINLINE FPlayerGraphicalStatus::FPlayerGraphicalStatus()
 
 FORCEINLINE FPlayerGraphicalStatus::FPlayerGraphicalStatus(FGraphicalConfiguration InConfiguration)
     : Configuration(InConfiguration)
+{}
+
+FORCEINLINE FPlayerGraphicalStatus::FPlayerGraphicalStatus(
+    FGraphicalConfiguration InConfiguration,
+    float InPercentage
+)
+    : Configuration(InConfiguration), Percentage(InPercentage)
 {}

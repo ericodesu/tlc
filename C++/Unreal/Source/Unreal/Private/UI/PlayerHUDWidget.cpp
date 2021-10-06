@@ -36,6 +36,23 @@ void SPlayerHUDWidget::AttachEssentialStatus()
 
 void SPlayerHUDWidget::AttachHealthStatusBar()
 {
+    FStyles HealthBarStyles = FStyles(
+        FLinearColor(FVector(28.0f, 237.0f, 70.0f)),
+        FLinearColor(FVector(209.0f, 209.0f, 209.0f))
+    );
+
+    FDimensions2D HealthBarDimensions = FDimensions2D(100.0f, 300.0f);
+
+    FGraphicalConfiguration HealthBarConfiguration = FGraphicalConfiguration(
+        HealthBarStyles,
+        HealthBarDimensions
+    );
+
+    this->PlayerHealthBar = FPlayerGraphicalStatus(
+        HealthBarConfiguration,
+        100.0f
+    );
+
     FooterBox->AddSlot()
     [
         SNew(SVerticalBox)
@@ -56,6 +73,28 @@ void SPlayerHUDWidget::AttachHealthStatusBar()
 
 void SPlayerHUDWidget::AttachManaStatusBar()
 {
+    FInternalFont ManaBarFont = FInternalFont(
+        "NotoSans-Light",
+        EFontLocales::JP,
+        EFontExtensions::OTF,
+        26
+    );
+
+    FStyles ManaBarStyles = FStyles(FLinearColor(FVector(255.0f, 255.0f, 255.0f)));
+
+    FDimensions2D ManaBarDimensions = FDimensions2D(100.0f, 300.0f);
+
+    FTextConfiguration ManaBarConfiguration = FTextConfiguration(
+        ManaBarFont.GetFontInfo(),
+        ManaBarStyles,
+        ManaBarDimensions
+    );
+
+    this->PlayerManaBar = FPlayerTextStatus(
+        ManaBarConfiguration,
+        "何か"
+    );
+
     FooterBox->AddSlot()
     [
         SNew(SVerticalBox)
@@ -63,13 +102,9 @@ void SPlayerHUDWidget::AttachManaStatusBar()
         .VAlign(VAlign_Bottom)
         [
             SNew(STextBlock)
-            .Font(FInternalFont(
-                "NotoSans-Light",
-                EFontLocales::JP,
-                EFontExtensions::OTF,
-                32
-            ).GetFontInfo())
-            .Text(LOCTEXT("ManaStatusLabel", "なにーーーー"))
+            .ColorAndOpacity(this->PlayerManaBar.Configuration.Styles.TextColor)
+            .Font(this->PlayerManaBar.Configuration.Font)
+            .Text(LOCTEXT("ManaStatusLabel", "何か"))
         ]
     ];
 }
