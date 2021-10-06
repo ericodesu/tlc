@@ -2,7 +2,8 @@
 
 #pragma once
 
-#include "Unreal/Types.h"
+#include "Unreal/Classes/PlayerStatus.h"
+#include "Unreal/Classes/InternalFont.h"
 
 #include "SlateBasics.h"
 #include "SlateExtras.h"
@@ -26,14 +27,6 @@ private:
 	TSharedPtr<SVerticalBox> WrapperBox;
 	TSharedPtr<SHorizontalBox> FooterBox;
 
-	FString GetFontLocale(const FontLocales& Locale);
-	FString GetFontExtension(const FontExtensions& Extension);
-	FSlateFontInfo GenerateSlateFontInfo(
-		const FString& FontName,
-		const FontExtensions& FontExtension,
-		const FontLocales& FontLocale,
-		const uint32& FontSize
-	);
 	void AttachEssentialStatus();
 	void AttachHealthStatusBar();
 	void AttachManaStatusBar();

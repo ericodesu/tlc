@@ -2,6 +2,7 @@
 
 
 #include "UI/PlayerHUDWidget.h"
+
 #include "Components/Widget.h"
 
 #define LOCTEXT_NAMESPACE "PlayerHUD"
@@ -27,50 +28,6 @@ void SPlayerHUDWidget::Construct(const FArguments& InArgs)
     AttachEssentialStatus();
 }
 
-FString SPlayerHUDWidget::GetFontLocale(const FontLocales& Locale)
-{
-    const FString EnumValues[]{
-        "",
-        "JP"
-    };
-
-    return EnumValues[Locale < (sizeof(EnumValues) / sizeof(*EnumValues)) ? Locale : 0].ToUpper();
-}
-
-FString SPlayerHUDWidget::GetFontExtension(const FontExtensions& Extension)
-{
-    const FString EnumValues[]{
-        "ttf",
-        "otf"
-    };
-
-    return EnumValues[Extension < (sizeof(EnumValues) / sizeof(*EnumValues)) ? Extension : 0].ToLower();
-}
-
-FSlateFontInfo SPlayerHUDWidget::GenerateSlateFontInfo(
-    const FString &FontName,
-    const FontExtensions& FontExtension,
-    const FontLocales& FontLocale,
-    const uint32& FontSize = 24
-)
-{
-    FString FontFileName = GetFontLocale(FontLocale) + FontName + "." + GetFontExtension(FontExtension);
-    FString FontDirPath = FPaths::ProjectContentDir() / "UI" / "HUD" / "Faces" / "Raw";
-    FString FontFilePath = FontDirPath / FontFileName;
-
-    if (FPaths::DirectoryExists(FontDirPath) == false || FPaths::FileExists(FontFilePath) == false)
-    {
-        FontFileName = "Roboto-Bold.ttf";
-        FontDirPath = FPaths::EngineContentDir() / "Slate" / "Fonts";
-        FontFilePath = FontDirPath / FontFileName;
-    }
-
-    return FSlateFontInfo(
-        FontFilePath,
-        FontSize
-    );
-}
-
 void SPlayerHUDWidget::AttachEssentialStatus()
 {
     AttachHealthStatusBar();
@@ -86,11 +43,12 @@ void SPlayerHUDWidget::AttachHealthStatusBar()
         .VAlign(VAlign_Bottom)
         [
             SNew(STextBlock)
-            .Font(GenerateSlateFontInfo(
+            .Font(FInternalFont(
                 "NotoSans-Bold",
-                FontExtensions::TTF,
-                FontLocales::EN_US
-            ))
+                EFontLocales::EN_US,
+                EFontExtensions::TTF,
+                32
+            ).GetFontInfo())
             .Text(LOCTEXT("LifeStatusLabel", "Life"))
         ]
     ];
@@ -105,12 +63,13 @@ void SPlayerHUDWidget::AttachManaStatusBar()
         .VAlign(VAlign_Bottom)
         [
             SNew(STextBlock)
-            .Font(GenerateSlateFontInfo(
-                "NotoSans-Bold",
-                FontExtensions::TTF,
-                FontLocales::EN_US
-            ))
-            .Text(LOCTEXT("ManaStatusLabel", "Mana"))
+            .Font(FInternalFont(
+                "NotoSans-Light",
+                EFontLocales::JP,
+                EFontExtensions::OTF,
+                32
+            ).GetFontInfo())
+            .Text(LOCTEXT("ManaStatusLabel", "なにーーーー"))
         ]
     ];
 }

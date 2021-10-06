@@ -2,7 +2,8 @@
 
 #pragma once
 
-#include "Unreal/Types.h"
+#include "Unreal/Classes/InifinitySphereSelectedAxis.h"
+#include "Unreal/Classes/InfinitySphereDimensions.h"
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
@@ -29,13 +30,13 @@ public:
 		Category = "Rotation Properties",
 		meta = (DisplayName = "Dimensions")
 	)
-	FInfinitySphereDimensionsVector RotationDimensions;
+	FInfinitySphereDimensions RotationDimensions;
 	UPROPERTY(
 		EditInstanceOnly,
 		Category = "Rotation Properties",
 		meta = (DisplayName = "Axis")
 	)
-	FInfinitySphereSelectedAxisVector RotationAxis;
+	FInifinitySphereSelectedAxis RotationAxis;
 	UPROPERTY(
 		EditInstanceOnly,
 		Category = "Rotation Properties",

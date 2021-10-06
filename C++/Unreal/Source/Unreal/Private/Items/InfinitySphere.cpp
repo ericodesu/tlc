@@ -9,8 +9,8 @@ AInfinitySphere::AInfinitySphere()
 	MainStaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MainStaticMeshComponent"));
 	RootComponent = MainStaticMeshComponent;
 
-	RotationDimensions = *(new FInfinitySphereDimensionsVector(0.0f, 0.0f));
-	RotationAxis = *(new FInfinitySphereSelectedAxisVector(false, false, false));
+	RotationDimensions = *(new FInfinitySphereDimensions(0.0f, 0.0f));
+	RotationAxis = *(new FInifinitySphereSelectedAxis(false, false, false));
 	RotationSpeed = 0.0f;
 	RotationAngle = 0.0f;
 }
