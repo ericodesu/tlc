@@ -14,19 +14,13 @@ struct FStyles
 public:
     FORCEINLINE FStyles();
 
-    FORCEINLINE FStyles(FLinearColor InBackgroundColor, FLinearColor InBorderColor);
+    FORCEINLINE FStyles(FLinearColor InBackgroundColor, FLinearColor InFillColor);
 
     FORCEINLINE FStyles(FLinearColor InTextColor);
 
-    FORCEINLINE FStyles(
-        FLinearColor InBackgroundColor,
-        FLinearColor InBorderColor,
-        FLinearColor InTextColor
-    );
-
     FLinearColor BackgroundColor;
 
-    FLinearColor BorderColor;
+    FLinearColor FillColor;
 
     FLinearColor TextColor;
 };
@@ -34,22 +28,12 @@ public:
 FORCEINLINE FStyles::FStyles()
 {}
 
-FORCEINLINE FStyles::FStyles(FLinearColor InBackgroundColor, FLinearColor InBorderColor)
-    : BackgroundColor(InBackgroundColor), BorderColor(InBorderColor)
+FORCEINLINE FStyles::FStyles(FLinearColor InBackgroundColor, FLinearColor InFillColor)
+    : BackgroundColor(InBackgroundColor), FillColor(InFillColor)
 {}
 
 FORCEINLINE FStyles::FStyles(FLinearColor InTextColor)
     : TextColor(InTextColor)
-{}
-
-FORCEINLINE FStyles::FStyles(
-    FLinearColor InBackgroundColor,
-    FLinearColor InBorderColor,
-    FLinearColor InTextColor
-)
-    : BackgroundColor(InBackgroundColor),
-      BorderColor(InBorderColor),
-      TextColor(InTextColor)
 {}
 
 USTRUCT()
@@ -148,14 +132,14 @@ public:
 
     FTextConfiguration Configuration;
 
-    FString Content;
+    FText Content;
 };
 
 FORCEINLINE FPlayerTextStatus::FPlayerTextStatus()
 {}
 
 FORCEINLINE FPlayerTextStatus::FPlayerTextStatus(FTextConfiguration InConfiguration, FString InContent)
-    : Configuration(InConfiguration), Content(InContent)
+    : Configuration(InConfiguration), Content(FText::FromString(InContent))
 {}
 
 USTRUCT()
@@ -170,24 +154,42 @@ public:
 
     FORCEINLINE FPlayerGraphicalStatus(
         FGraphicalConfiguration InConfiguration,
-        float InPercentage
+        float InProgress
     );
+
+    TOptional<float> GetProgress();
 
     FGraphicalConfiguration Configuration;
 
-    float Percentage;
+    float Progress;
 };
 
 FORCEINLINE FPlayerGraphicalStatus::FPlayerGraphicalStatus()
 {}
 
 FORCEINLINE FPlayerGraphicalStatus::FPlayerGraphicalStatus(FGraphicalConfiguration InConfiguration)
-    : Configuration(InConfiguration)
+    : Configuration(InConfiguration), Progress(100.0f)
 {}
 
 FORCEINLINE FPlayerGraphicalStatus::FPlayerGraphicalStatus(
     FGraphicalConfiguration InConfiguration,
-    float InPercentage
+    float InProgress
 )
-    : Configuration(InConfiguration), Percentage(InPercentage)
+    : Configuration(InConfiguration), Progress(InProgress)
 {}
+
+inline TOptional<float> FPlayerGraphicalStatus::GetProgress()
+{
+    float ConvertedProgress = this->Progress / 100.0f;
+
+    if (ConvertedProgress < 0.0f)
+    {
+        ConvertedProgress = 0.0f;
+    }
+    else if (ConvertedProgress > 1.0f)
+    {
+        ConvertedProgress = 1.0f;
+    }
+
+    return ConvertedProgress;
+}

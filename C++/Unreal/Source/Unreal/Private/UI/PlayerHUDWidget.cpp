@@ -9,20 +9,22 @@
 
 void SPlayerHUDWidget::Construct(const FArguments& InArgs)
 {
-    ChildSlot
+    this->BarDimensions = FDimensions2D(300.0f, 100.0f);
+
+    this->ChildSlot
     [
         SNew(SOverlay)
         + SOverlay::Slot()
         .HAlign(HAlign_Fill)
         .VAlign(VAlign_Fill)
         [
-            SAssignNew(WrapperBox, SVerticalBox)
+            SAssignNew(this->WrapperBox, SVerticalBox)
         ]
     ];
 
-    WrapperBox->AddSlot()
+    this->WrapperBox->AddSlot()
     [
-        SAssignNew(FooterBox, SHorizontalBox)
+        SAssignNew(this->FooterBox, SHorizontalBox)
     ];
 
     AttachEssentialStatus();
@@ -36,75 +38,70 @@ void SPlayerHUDWidget::AttachEssentialStatus()
 
 void SPlayerHUDWidget::AttachHealthStatusBar()
 {
-    FStyles HealthBarStyles = FStyles(
-        FLinearColor(FVector(28.0f, 237.0f, 70.0f)),
-        FLinearColor(FVector(209.0f, 209.0f, 209.0f))
+    FStyles BarStyles = FStyles(
+        FLinearColor(0.0f, 0.0f, 0.0f, 1.0f),
+        FLinearColor(74.0f / 255.0f, 154.0f / 255.0f, 54.0f / 255.0f, 1.0f)
     );
 
-    FDimensions2D HealthBarDimensions = FDimensions2D(100.0f, 300.0f);
-
-    FGraphicalConfiguration HealthBarConfiguration = FGraphicalConfiguration(
-        HealthBarStyles,
-        HealthBarDimensions
+    FGraphicalConfiguration BarConfiguration = FGraphicalConfiguration(
+        BarStyles,
+        this->BarDimensions
     );
 
     this->PlayerHealthBar = FPlayerGraphicalStatus(
-        HealthBarConfiguration,
-        100.0f
+        BarConfiguration,
+        70.0f
     );
 
-    FooterBox->AddSlot()
+    this->FooterBox->AddSlot()
     [
-        SNew(SVerticalBox)
-        + SVerticalBox::Slot()
+        SNew(SBox)
         .VAlign(VAlign_Bottom)
+        .HAlign(HAlign_Left)
+        .HeightOverride(this->PlayerHealthBar.Configuration.Dimensions.Height)
+        .WidthOverride(this->PlayerHealthBar.Configuration.Dimensions.Width)
         [
-            SNew(STextBlock)
-            .Font(FInternalFont(
-                "NotoSans-Bold",
-                EFontLocales::EN_US,
-                EFontExtensions::TTF,
-                32
-            ).GetFontInfo())
-            .Text(LOCTEXT("LifeStatusLabel", "Life"))
+            SNew(SProgressBar)
+            .BarFillType(EProgressBarFillType::LeftToRight)
+            .FillColorAndOpacity(this->PlayerHealthBar.Configuration.Styles.FillColor)
+            .Percent_Lambda([&]() {
+                return this->PlayerHealthBar.GetProgress();
+            })
         ]
     ];
 }
 
 void SPlayerHUDWidget::AttachManaStatusBar()
 {
-    FInternalFont ManaBarFont = FInternalFont(
-        "NotoSans-Light",
-        EFontLocales::JP,
-        EFontExtensions::OTF,
-        26
+    FStyles BarStyles = FStyles(
+        FLinearColor(0.0f, 0.0f, 0.0f, 1.0f),
+        FLinearColor(47.0f / 255.0f, 144.0f / 255.0f, 235.0f / 255.0f, 1.0f)
     );
 
-    FStyles ManaBarStyles = FStyles(FLinearColor(FVector(255.0f, 255.0f, 255.0f)));
-
-    FDimensions2D ManaBarDimensions = FDimensions2D(100.0f, 300.0f);
-
-    FTextConfiguration ManaBarConfiguration = FTextConfiguration(
-        ManaBarFont.GetFontInfo(),
-        ManaBarStyles,
-        ManaBarDimensions
+    FGraphicalConfiguration BarConfiguration = FGraphicalConfiguration(
+        BarStyles,
+        this->BarDimensions
     );
 
-    this->PlayerManaBar = FPlayerTextStatus(
-        ManaBarConfiguration,
-        "何か"
+    this->PlayerManaBar = FPlayerGraphicalStatus(
+        BarConfiguration,
+        90.0f
     );
 
-    FooterBox->AddSlot()
+    this->FooterBox->AddSlot()
     [
-        SNew(SVerticalBox)
-        + SVerticalBox::Slot()
+        SNew(SBox)
         .VAlign(VAlign_Bottom)
+        .HAlign(HAlign_Right)
+        .HeightOverride(this->PlayerManaBar.Configuration.Dimensions.Height)
+        .WidthOverride(this->PlayerManaBar.Configuration.Dimensions.Width)
         [
-            SNew(STextBlock)
-            .ColorAndOpacity(this->PlayerManaBar.Configuration.Styles.TextColor)
-            .Font(this->PlayerManaBar.Configuration.Font)
-            .Text(LOCTEXT("ManaStatusLabel", "何か"))
+            SNew(SProgressBar)
+            .BarFillType(EProgressBarFillType::RightToLeft)
+            .FillColorAndOpacity(this->PlayerManaBar.Configuration.Styles.FillColor)
+            .Percent_Lambda([&](){
+                return this->PlayerManaBar.GetProgress();
+            })
         ]
     ];
 }

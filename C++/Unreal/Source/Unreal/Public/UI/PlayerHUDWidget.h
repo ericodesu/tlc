@@ -24,13 +24,14 @@ public:
 	void Construct(const FArguments& InArgs);
 
 private:
+	void AttachEssentialStatus();
+	void AttachHealthStatusBar();
+	void AttachManaStatusBar();
+
 	TWeakObjectPtr<class APlayerHUD> WidgetOwner;
 	TSharedPtr<SVerticalBox> WrapperBox;
 	TSharedPtr<SHorizontalBox> FooterBox;
 	FPlayerGraphicalStatus PlayerHealthBar;
-	FPlayerTextStatus PlayerManaBar;
-
-	void AttachEssentialStatus();
-	void AttachHealthStatusBar();
-	void AttachManaStatusBar();
+	FPlayerGraphicalStatus PlayerManaBar;
+	FDimensions2D BarDimensions;
 };
