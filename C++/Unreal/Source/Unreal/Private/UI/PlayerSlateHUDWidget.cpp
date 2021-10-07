@@ -1,13 +1,13 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "UI/PlayerHUDWidget.h"
+#include "UI/PlayerSlateHUDWidget.h"
 
 #include "Components/Widget.h"
 
-#define LOCTEXT_NAMESPACE "PlayerHUD"
+#define LOCTEXT_NAMESPACE "PlayerSlateHUD"
 
-void SPlayerHUDWidget::Construct(const FArguments& InArgs)
+void SPlayerSlateHUDWidget::Construct(const FArguments& InArgs)
 {
     this->BarDimensions = FDimensions2D(300.0f, 100.0f);
 
@@ -30,13 +30,13 @@ void SPlayerHUDWidget::Construct(const FArguments& InArgs)
     AttachEssentialStatus();
 }
 
-void SPlayerHUDWidget::AttachEssentialStatus()
+void SPlayerSlateHUDWidget::AttachEssentialStatus()
 {
     AttachHealthStatusBar();
     AttachManaStatusBar();
 }
 
-void SPlayerHUDWidget::AttachHealthStatusBar()
+void SPlayerSlateHUDWidget::AttachHealthStatusBar()
 {
     FStyles BarStyles = FStyles(
         FLinearColor(0.0f, 0.0f, 0.0f, 1.0f),
@@ -71,7 +71,7 @@ void SPlayerHUDWidget::AttachHealthStatusBar()
     ];
 }
 
-void SPlayerHUDWidget::AttachManaStatusBar()
+void SPlayerSlateHUDWidget::AttachManaStatusBar()
 {
     FStyles BarStyles = FStyles(
         FLinearColor(0.0f, 0.0f, 0.0f, 1.0f),

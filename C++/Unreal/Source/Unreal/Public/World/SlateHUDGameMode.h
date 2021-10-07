@@ -4,18 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "HUDGamemode.generated.h"
+#include "SlateHUDGamemode.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UNREAL_API AHUDGameMode : public AGameModeBase
+class UNREAL_API ASlateHUDGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-	AHUDGameMode();
+	ASlateHUDGameMode();
 
 	virtual void Tick(float DeltaTime) override;
 };

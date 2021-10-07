@@ -4,18 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
-#include "PlayerHUD.generated.h"
+#include "PlayerSlateHUD.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UNREAL_API APlayerHUD : public AHUD
+class UNREAL_API APlayerSlateHUD : public AHUD
 {
 	GENERATED_BODY()
 
 protected:
 	virtual void BeginPlay() override;
 
-	TSharedPtr<class SPlayerHUDWidget> PlayerHUDWidget;
+	TSharedPtr<class SPlayerSlateHUDWidget> PlayerSlateHUDWidget;
 };

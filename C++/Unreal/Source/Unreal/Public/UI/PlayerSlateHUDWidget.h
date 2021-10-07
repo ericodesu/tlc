@@ -4,7 +4,6 @@
 
 #include "Unreal/Classes/PlayerStatus.h"
 #include "Unreal/Classes/InternalFont.h"
-#include "Unreal/Classes/PlayerStatus.h"
 
 #include "SlateBasics.h"
 #include "SlateExtras.h"
@@ -12,11 +11,11 @@
 /**
  * 
  */
-class SPlayerHUDWidget : public SCompoundWidget
+class SPlayerSlateHUDWidget : public SCompoundWidget
 {
-	SLATE_BEGIN_ARGS(SPlayerHUDWidget) {}
+	SLATE_BEGIN_ARGS(SPlayerSlateHUDWidget) {}
 
-	SLATE_ARGUMENT(TWeakObjectPtr<class APlayerHUD>, WidgetOwnerArg)
+	SLATE_ARGUMENT(TWeakObjectPtr<class APlayerSlateHUD>, WidgetOwnerArg)
 
 	SLATE_END_ARGS()
 
@@ -28,7 +27,7 @@ private:
 	void AttachHealthStatusBar();
 	void AttachManaStatusBar();
 
-	TWeakObjectPtr<class APlayerHUD> WidgetOwner;
+	TWeakObjectPtr<class APlayerSlateHUD> WidgetOwner;
 	TSharedPtr<SVerticalBox> WrapperBox;
 	TSharedPtr<SHorizontalBox> FooterBox;
 	FPlayerGraphicalStatus PlayerHealthBar;

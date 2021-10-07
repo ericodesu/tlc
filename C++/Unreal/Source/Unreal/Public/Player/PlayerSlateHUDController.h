@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "PlayerHUDController.generated.h"
+#include "PlayerSlateHUDController.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UNREAL_API APlayerHUDController : public APlayerController
+class UNREAL_API APlayerSlateHUDController : public APlayerController
 {
 	GENERATED_BODY()
 	
