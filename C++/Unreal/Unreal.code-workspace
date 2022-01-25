@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"name": "Unreal",
+			"path": "."
+		},
+		{
+			"name": "UE4",
+			"path": "C:\\Program Files\\Epic Games\\UE_4.27"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"C_Cpp.default.forcedInclude": [
+			"${default}",
+			"C:\\Users\\Kuopira\\Desktop\\Dev\\Projects\\tlc\\C++\\Unreal\\Intermediate\\Build\\Win64\\UE4Editor\\Development\\Unreal\\Definitions.Unreal.h",
+			"C:\\Users\\Kuopira\\Desktop\\Dev\\Projects\\tlc\\C++\\Unreal\\Intermediate\\Build\\Win64\\UnrealEditor\\Development\\Engine\\SharedPCH.Engine.ShadowErrors.h"
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	}
+}
